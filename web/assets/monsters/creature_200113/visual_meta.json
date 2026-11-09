@@ -1,0 +1,48 @@
+{
+  "name": "Camy【Tiến Hóa】",
+  "anchor": [
+    0.5,
+    0.8924
+  ],
+  "width": 180,
+  "height": 158,
+  "bbox": [
+    24,
+    19,
+    204,
+    177
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 395.0,
+  "atlas_dimensions": [
+    2048,
+    2048
+  ],
+  "id": "creature_200113",
+  "db_id": "1425",
+  "res_code_num": 200113,
+  "swf_hash": "04a4c7e0759748caf01239b4e752837d",
+  "feet_y": 141
+}

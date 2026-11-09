@@ -1,0 +1,48 @@
+{
+  "name": "Long Tiểu Thanh【Tiến Hóa】",
+  "anchor": [
+    0.5,
+    0.8582
+  ],
+  "width": 288,
+  "height": 275,
+  "bbox": [
+    103,
+    86,
+    391,
+    361
+  ],
+  "total_unique_bitmaps": 168,
+  "animations_count": 64,
+  "total_animation_frames": 779,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 2518.4,
+  "atlas_dimensions": [
+    8192,
+    2048
+  ],
+  "id": "creature_100052",
+  "db_id": "2278",
+  "res_code_num": 100052,
+  "swf_hash": "6a63e76d1256a199673426c897d0d93a",
+  "feet_y": 236
+}

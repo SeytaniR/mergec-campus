@@ -1,0 +1,49 @@
+{
+  "name": "Maga Base (F)",
+  "anchor": [
+    0.5,
+    0.8198
+  ],
+  "width": 95,
+  "height": 111,
+  "bbox": [
+    62,
+    40,
+    157,
+    151
+  ],
+  "total_unique_bitmaps": 74,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 200.1,
+  "atlas_dimensions": [
+    1024,
+    1024
+  ],
+  "id": "PC_FEMALE_000002",
+  "gender": "FEMALE",
+  "tier": 1,
+  "res_code_num": 2,
+  "swf_hash": "25eae425871bb3907239c8de1ca1d7f4",
+  "feet_y": 91
+}

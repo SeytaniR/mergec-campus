@@ -1,0 +1,48 @@
+{
+  "name": "Mạc Tà【HLVT】",
+  "anchor": [
+    0.5,
+    0.8239
+  ],
+  "width": 154,
+  "height": 142,
+  "bbox": [
+    179,
+    168,
+    333,
+    310
+  ],
+  "total_unique_bitmaps": 82,
+  "animations_count": 64,
+  "total_animation_frames": 779,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 290.4,
+  "atlas_dimensions": [
+    2048,
+    1024
+  ],
+  "id": "creature_200173",
+  "db_id": "2195",
+  "res_code_num": 200173,
+  "swf_hash": "255eb457fa1578aff64ce6e25354c382",
+  "feet_y": 117
+}

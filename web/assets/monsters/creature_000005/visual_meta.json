@@ -1,0 +1,48 @@
+{
+  "name": "Cận Vệ Của Rink",
+  "anchor": [
+    0.5,
+    0.9346
+  ],
+  "width": 81,
+  "height": 107,
+  "bbox": [
+    68,
+    26,
+    149,
+    133
+  ],
+  "total_unique_bitmaps": 74,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 195.2,
+  "atlas_dimensions": [
+    1024,
+    1024
+  ],
+  "id": "creature_000005",
+  "db_id": "220",
+  "res_code_num": 5,
+  "swf_hash": "5fd7d0051422b1a623fbf1af9c9c7683",
+  "feet_y": 100
+}

@@ -1,0 +1,48 @@
+{
+  "name": "Nấm Điện【Tiến Hóa】",
+  "anchor": [
+    0.5,
+    0.925
+  ],
+  "width": 121,
+  "height": 120,
+  "bbox": [
+    10,
+    4,
+    131,
+    124
+  ],
+  "total_unique_bitmaps": 74,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 253.8,
+  "atlas_dimensions": [
+    2048,
+    1024
+  ],
+  "id": "creature_200119",
+  "db_id": "1424",
+  "res_code_num": 200119,
+  "swf_hash": "200611c88abb1d012b89be85569a3b63",
+  "feet_y": 111
+}

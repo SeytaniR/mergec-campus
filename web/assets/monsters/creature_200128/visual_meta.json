@@ -1,0 +1,48 @@
+{
+  "name": "Ác Ma Quấy Phá【Tiến Hóa】",
+  "anchor": [
+    0.5,
+    0.7941
+  ],
+  "width": 112,
+  "height": 102,
+  "bbox": [
+    18,
+    34,
+    130,
+    136
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 139.1,
+  "atlas_dimensions": [
+    1024,
+    1024
+  ],
+  "id": "creature_200128",
+  "db_id": "1408",
+  "res_code_num": 200128,
+  "swf_hash": "a811ea625f26c2a33726d87ccf9a6cf4",
+  "feet_y": 81
+}

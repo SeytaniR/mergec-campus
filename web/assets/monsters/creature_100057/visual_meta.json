@@ -1,0 +1,48 @@
+{
+  "name": "Bạch Hổ Cuồng Nộ",
+  "anchor": [
+    0.5,
+    0.8599
+  ],
+  "width": 196,
+  "height": 157,
+  "bbox": [
+    158,
+    162,
+    354,
+    319
+  ],
+  "total_unique_bitmaps": 168,
+  "animations_count": 64,
+  "total_animation_frames": 779,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 711.7,
+  "atlas_dimensions": [
+    4096,
+    2048
+  ],
+  "id": "creature_100057",
+  "db_id": "2290",
+  "res_code_num": 100057,
+  "swf_hash": "c6221a5fe9f79141f02c8a7ad807068c",
+  "feet_y": 135
+}

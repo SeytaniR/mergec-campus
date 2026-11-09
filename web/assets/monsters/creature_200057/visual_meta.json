@@ -1,0 +1,48 @@
+{
+  "name": "Cờ Hiệu",
+  "anchor": [
+    0.5,
+    0.7143
+  ],
+  "width": 153,
+  "height": 175,
+  "bbox": [
+    66,
+    25,
+    219,
+    200
+  ],
+  "total_unique_bitmaps": 92,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 299.8,
+  "atlas_dimensions": [
+    2048,
+    2048
+  ],
+  "id": "creature_200057",
+  "db_id": "1171",
+  "res_code_num": 200057,
+  "swf_hash": "12cb0c0ca4e71df14532ba07181082d2",
+  "feet_y": 125
+}

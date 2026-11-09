@@ -1,0 +1,48 @@
+{
+  "name": "Dê Con II【Tiến Hóa】",
+  "anchor": [
+    0.5,
+    0.8777
+  ],
+  "width": 136,
+  "height": 139,
+  "bbox": [
+    5,
+    4,
+    141,
+    143
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 237.3,
+  "atlas_dimensions": [
+    2048,
+    1024
+  ],
+  "id": "creature_200118",
+  "db_id": "1417",
+  "res_code_num": 200118,
+  "swf_hash": "4a864f25fe44a8eb9898596ca940ac7a",
+  "feet_y": 122
+}

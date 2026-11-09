@@ -1,0 +1,48 @@
+{
+  "name": "Ác Ma Thú Sơ Cấp",
+  "anchor": [
+    0.5,
+    0.7251
+  ],
+  "width": 356,
+  "height": 371,
+  "bbox": [
+    222,
+    139,
+    578,
+    510
+  ],
+  "total_unique_bitmaps": 82,
+  "animations_count": 64,
+  "total_animation_frames": 779,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 1298.9,
+  "atlas_dimensions": [
+    4096,
+    4096
+  ],
+  "id": "creature_001258",
+  "db_id": "2158",
+  "res_code_num": 1258,
+  "swf_hash": "dfa232c5d64d3098e0f5cb5dad2ab14f",
+  "feet_y": 269
+}

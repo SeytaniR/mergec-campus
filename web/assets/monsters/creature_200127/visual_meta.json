@@ -1,0 +1,48 @@
+{
+  "name": "Thiên Sứ Mít Ướt【Tiến Hóa】",
+  "anchor": [
+    0.5,
+    0.9217
+  ],
+  "width": 117,
+  "height": 115,
+  "bbox": [
+    25,
+    28,
+    142,
+    143
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 190.1,
+  "atlas_dimensions": [
+    2048,
+    512
+  ],
+  "id": "creature_200127",
+  "db_id": "1407",
+  "res_code_num": 200127,
+  "swf_hash": "81da1c7bd72e4c0793c92ce792d837bb",
+  "feet_y": 106
+}

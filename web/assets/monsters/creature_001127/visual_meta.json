@@ -1,0 +1,48 @@
+{
+  "name": "Bí Ngô Làm Loạn",
+  "anchor": [
+    0.5,
+    0.859
+  ],
+  "width": 151,
+  "height": 156,
+  "bbox": [
+    94,
+    32,
+    245,
+    188
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 203.9,
+  "atlas_dimensions": [
+    2048,
+    1024
+  ],
+  "id": "creature_001127",
+  "db_id": "882",
+  "res_code_num": 1127,
+  "swf_hash": "21b6294f1e519ff43fb8993eb87a307f",
+  "feet_y": 134
+}

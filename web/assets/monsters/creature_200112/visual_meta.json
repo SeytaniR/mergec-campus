@@ -1,0 +1,48 @@
+{
+  "name": "Công Chúa Ác Ma【Tiến Hóa】",
+  "anchor": [
+    0.5,
+    0.9
+  ],
+  "width": 166,
+  "height": 150,
+  "bbox": [
+    4,
+    5,
+    170,
+    155
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 302.2,
+  "atlas_dimensions": [
+    2048,
+    1024
+  ],
+  "id": "creature_200112",
+  "db_id": "1421",
+  "res_code_num": 200112,
+  "swf_hash": "fc56f2a6304bd40a3d2d6aa095b75520",
+  "feet_y": 135
+}

@@ -1,0 +1,14 @@
+{
+  "name": "mergec-campus-server",
+  "version": "1.0.0",
+  "description": "Authoritative ES6 WebSocket Server for Mergec Campus",
+  "type": "module",
+  "main": "src/AuthoritativeServer.js",
+  "scripts": {
+    "start": "node src/AuthoritativeServer.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.0",
+    "pg": "^8.13.0"
+  }
+}

@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: mergec
+      POSTGRES_PASSWORD: mergec_secret_password
+      POSTGRES_DB: mergec_campus
+    volumes:
+      - ./server/db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - pgdata:/var/lib/postgresql/data
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+
+  authoritative-server:
+    image: node:20-alpine
+    working_dir: /app/server
+    command: sh -c "npm install --omit=dev && npm start"
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      PORT: 3001
+      DATABASE_URL: postgres://mergec:mergec_secret_password@postgres:5432/mergec_campus
+    volumes:
+      - ./:/app
+    depends_on:
+      - postgres
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+
+volumes:
+  pgdata:

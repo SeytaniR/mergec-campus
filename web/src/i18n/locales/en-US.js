@@ -1,0 +1,86 @@
+/**
+ * en-US.js
+ * English locale dictionary mapped via i18n keys and {variable} placeholders.
+ * Uses the PT-BR database names as reference for automated glossary translation.
+ */
+export const enUS = {
+  "app.title": "Mergec Campus",
+  "app.subtitle": "8-Direction Tactical Merge & Auto-Battler",
+
+  "ui.hud.round": "Round {round}",
+  "ui.hud.phase.prep": "Prep & Merge Phase",
+  "ui.hud.phase.combat": "Arena Combat!",
+  "ui.hud.gold": "{gold}",
+  "ui.hud.level": "Lv. {level}",
+  "ui.hud.xp": "XP {xp}/{nextXp}",
+  "ui.hud.board_cap": "Board: {current}/{max}",
+  "ui.hud.hp": "HP: {hp}",
+  "ui.hud.streak": "Streak: {streak}🔥",
+  "ui.hud.server_mode.local": "Server: Local Authoritative (Loopback)",
+  "ui.hud.server_mode.remote": "Server: Online VPS ({url})",
+
+  "ui.btn.start_combat": "⚔️ Start Battle",
+  "ui.btn.in_combat": "⏳ In Combat...",
+  "ui.btn.reroll": "🎲 Reroll ({cost}🪙)",
+  "ui.btn.buy_xp": "⬆️ +4 XP ({cost}🪙)",
+  "ui.btn.codex": "📖 8-Dir Codex ({count})",
+  "ui.btn.sell_zone": "💰 Drag here to sell (+{refund}🪙)",
+
+  "ui.panel.synergies": "✨ Active Synergies",
+  "ui.panel.synergies.empty": "Deploy units on the board to activate traits",
+  "ui.panel.inspector": "🔍 Unit Inspector",
+  "ui.panel.inspector.empty": "Tap any unit to inspect stats & ultimate skill",
+  "ui.panel.bench_label": "Merge Bench (Combine 3 identical = ⭐+1)",
+
+  "ui.shop.cost": "{cost}🪙",
+  "ui.shop.sold": "✓ Purchased",
+  "ui.shop.locked": "🔒 Shop Locked",
+  "ui.shop.unlocked": "🔓 Lock Shop",
+
+  "ui.codex.title": "📖 Official Roster: {count} Verified 8-Direction Models",
+  "ui.codex.subtitle": "Strictly characters, pets, and NPCs with full 8-direction animations (i18n key + PT-BR DB reference)",
+  "ui.codex.search_placeholder": "Search by PT-BR ref name, i18n key, or ID...",
+  "ui.codex.filter.all": "All ({count})",
+  "ui.codex.filter.characters": "Heroes ({count})",
+  "ui.codex.filter.monsters": "Pets & Monsters ({count})",
+  "ui.codex.filter.npcs": "Combat NPCs ({count})",
+  "ui.codex.spawn_btn": "➕ Spawn on Bench (Test)",
+
+  "toast.merge.success": "🌟 MERGE! {name} upgraded to {stars}-Star!",
+  "toast.combat.victory": "🏆 Round {round} Victory! +{gold} Gold earned!",
+  "toast.combat.defeat": "💀 Round {round} Defeat! You took {dmg} HP damage.",
+  "toast.shop.no_gold": "Not enough gold! Need {cost}🪙.",
+  "toast.bench.full": "Bench is full (9/9)! Merge units or deploy to the board.",
+  "toast.board.full": "Board limit reached ({max}/{max})! Level up to deploy more units.",
+  "toast.board.combat_locked": "Wait for combat to finish before repositioning board units!",
+
+  "trait.origin.academy.name": "Magic Academy",
+  "trait.origin.academy.desc": "Grants +{bonus} starting Mana and +{ap}% Ability Power to Academy units.",
+  "trait.origin.dragon.name": "Dragonkin",
+  "trait.origin.dragon.desc": "Attacks scorch targets and grant +{bonus}% Critical Strike Damage.",
+  "trait.origin.beast.name": "Wild Beast",
+  "trait.origin.beast.desc": "Increases team Attack Speed by +{bonus}%.",
+  "trait.origin.mech.name": "Mechatronic",
+  "trait.origin.mech.desc": "Starts combat with a +{bonus} HP Shield and +{def} Armor.",
+  "trait.origin.spirit.name": "Elemental Spirit",
+  "trait.origin.spirit.desc": "Restores +{bonus} extra Mana per basic attack.",
+  "trait.origin.nature.name": "Living Nature",
+  "trait.origin.nature.desc": "Heals {bonus} HP every 2 seconds during combat.",
+  "trait.origin.shadow.name": "Shadow Pact",
+  "trait.origin.shadow.desc": "Deals +{bonus}% bonus damage against enemies below 60% HP.",
+  "trait.origin.celestial.name": "Celestial",
+  "trait.origin.celestial.desc": "Grants {bonus}% Omnivamp to your entire squad.",
+
+  "trait.class.warrior.name": "Warrior",
+  "trait.class.warrior.desc": "Warriors gain +{bonus} Armor and +{atk} Attack Damage.",
+  "trait.class.mage.name": "Arcanist",
+  "trait.class.mage.desc": "Ultimate skills deal +{bonus}% amplified Magic Damage.",
+  "trait.class.ranger.name": "Marksman",
+  "trait.class.ranger.desc": "Gains +1 Attack Range and +{bonus}% Attack Speed.",
+  "trait.class.assassin.name": "Assassin",
+  "trait.class.assassin.desc": "Targets backline enemies and gains +{bonus}% Skill Damage.",
+  "trait.class.guardian.name": "Bastion",
+  "trait.class.guardian.desc": "Increases Maximum HP by +{bonus}% and reduces incoming damage.",
+  "trait.class.mystic.name": "Mystic",
+  "trait.class.mystic.desc": "Grants +{bonus} Magic Resist and amplifies shields/heals."
+};

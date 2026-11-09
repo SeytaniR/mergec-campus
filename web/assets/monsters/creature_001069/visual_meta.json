@@ -1,0 +1,48 @@
+{
+  "name": "Mèo Yêu Tinh Nghịch",
+  "anchor": [
+    0.5,
+    0.703
+  ],
+  "width": 141,
+  "height": 101,
+  "bbox": [
+    6,
+    6,
+    147,
+    107
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 148.9,
+  "atlas_dimensions": [
+    2048,
+    1024
+  ],
+  "id": "creature_001069",
+  "db_id": "38",
+  "res_code_num": 1069,
+  "swf_hash": "9e07a7d518e7ee2df9f61b39a6ed850d",
+  "feet_y": 71
+}

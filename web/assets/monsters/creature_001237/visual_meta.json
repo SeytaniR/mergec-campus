@@ -1,0 +1,51 @@
+{
+  "name": "Gà Tây Bạo Động",
+  "anchor": [
+    0.5,
+    0.8144
+  ],
+  "width": 165,
+  "height": 194,
+  "bbox": [
+    173,
+    133,
+    338,
+    327
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 88,
+  "total_animation_frames": 1304,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 388.4,
+  "atlas_dimensions": [
+    2048,
+    2048
+  ],
+  "id": "creature_001237",
+  "db_id": "1483",
+  "res_code_num": 1237,
+  "swf_hash": "1447fceed7e9755f21cdeebe7a05a9b1",
+  "feet_y": 158
+}

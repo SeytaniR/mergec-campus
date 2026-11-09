@@ -1,0 +1,51 @@
+{
+  "name": "Chiến Dương【Tiến Hóa】",
+  "anchor": [
+    0.5,
+    0.9147
+  ],
+  "width": 128,
+  "height": 129,
+  "bbox": [
+    151,
+    129,
+    279,
+    258
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 88,
+  "total_animation_frames": 1304,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 223.9,
+  "atlas_dimensions": [
+    2048,
+    1024
+  ],
+  "id": "creature_200168",
+  "db_id": "2072",
+  "res_code_num": 200168,
+  "swf_hash": "da3862e915032b17d14853eff0005135",
+  "feet_y": 118
+}

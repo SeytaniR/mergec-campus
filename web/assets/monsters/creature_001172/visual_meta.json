@@ -1,0 +1,48 @@
+{
+  "name": "Dây Rong",
+  "anchor": [
+    0.5,
+    0.883
+  ],
+  "width": 99,
+  "height": 94,
+  "bbox": [
+    206,
+    208,
+    305,
+    302
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 126.7,
+  "atlas_dimensions": [
+    1024,
+    1024
+  ],
+  "id": "creature_001172",
+  "db_id": "1326",
+  "res_code_num": 1172,
+  "swf_hash": "127b2c26207af3b3b5b7e9246a21982e",
+  "feet_y": 83
+}

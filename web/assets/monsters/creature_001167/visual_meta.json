@@ -1,0 +1,48 @@
+{
+  "name": "Thống Lĩnh Ma Điện【Quái Chính 4 Chu Ma Điện】",
+  "anchor": [
+    0.5,
+    0.805
+  ],
+  "width": 198,
+  "height": 200,
+  "bbox": [
+    74,
+    37,
+    272,
+    237
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 382.5,
+  "atlas_dimensions": [
+    2048,
+    2048
+  ],
+  "id": "creature_001167",
+  "db_id": "1244",
+  "res_code_num": 1167,
+  "swf_hash": "3fb6189b5be7d8661a6a4316313001f3",
+  "feet_y": 161
+}

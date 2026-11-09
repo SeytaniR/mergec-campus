@@ -1,0 +1,250 @@
+{
+  "frames": {
+    "10001_00": {
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "w": 216,
+        "h": 173
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 216,
+        "h": 173
+      },
+      "sourceSize": {
+        "w": 216,
+        "h": 173
+      }
+    },
+    "10001_01": {
+      "frame": {
+        "x": 220,
+        "y": 2,
+        "w": 216,
+        "h": 173
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 216,
+        "h": 173
+      },
+      "sourceSize": {
+        "w": 216,
+        "h": 173
+      }
+    },
+    "10001_02": {
+      "frame": {
+        "x": 438,
+        "y": 2,
+        "w": 216,
+        "h": 173
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 216,
+        "h": 173
+      },
+      "sourceSize": {
+        "w": 216,
+        "h": 173
+      }
+    },
+    "10001_03": {
+      "frame": {
+        "x": 656,
+        "y": 2,
+        "w": 216,
+        "h": 173
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 216,
+        "h": 173
+      },
+      "sourceSize": {
+        "w": 216,
+        "h": 173
+      }
+    },
+    "10001_04": {
+      "frame": {
+        "x": 2,
+        "y": 177,
+        "w": 216,
+        "h": 173
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 216,
+        "h": 173
+      },
+      "sourceSize": {
+        "w": 216,
+        "h": 173
+      }
+    },
+    "10001_05": {
+      "frame": {
+        "x": 220,
+        "y": 177,
+        "w": 216,
+        "h": 173
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 216,
+        "h": 173
+      },
+      "sourceSize": {
+        "w": 216,
+        "h": 173
+      }
+    },
+    "10001_06": {
+      "frame": {
+        "x": 438,
+        "y": 177,
+        "w": 216,
+        "h": 173
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 216,
+        "h": 173
+      },
+      "sourceSize": {
+        "w": 216,
+        "h": 173
+      }
+    },
+    "10001_07": {
+      "frame": {
+        "x": 656,
+        "y": 177,
+        "w": 216,
+        "h": 173
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 216,
+        "h": 173
+      },
+      "sourceSize": {
+        "w": 216,
+        "h": 173
+      }
+    },
+    "10001_08": {
+      "frame": {
+        "x": 2,
+        "y": 352,
+        "w": 216,
+        "h": 173
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 216,
+        "h": 173
+      },
+      "sourceSize": {
+        "w": 216,
+        "h": 173
+      }
+    },
+    "10001_09": {
+      "frame": {
+        "x": 220,
+        "y": 352,
+        "w": 216,
+        "h": 173
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 216,
+        "h": 173
+      },
+      "sourceSize": {
+        "w": 216,
+        "h": 173
+      }
+    },
+    "10001_10": {
+      "frame": {
+        "x": 438,
+        "y": 352,
+        "w": 216,
+        "h": 173
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 216,
+        "h": 173
+      },
+      "sourceSize": {
+        "w": 216,
+        "h": 173
+      }
+    }
+  },
+  "animations": {
+    "play": [
+      "10001_00",
+      "10001_01",
+      "10001_02",
+      "10001_03",
+      "10001_04",
+      "10001_05",
+      "10001_06",
+      "10001_07",
+      "10001_08",
+      "10001_09",
+      "10001_10"
+    ]
+  },
+  "meta": {
+    "app": "MagicCampusEffectConverter",
+    "version": "1.0",
+    "image": "atlas.webp",
+    "format": "RGBA8888",
+    "size": {
+      "w": 874,
+      "h": 527
+    },
+    "scale": "1"
+  }
+}

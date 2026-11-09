@@ -1,0 +1,49 @@
+{
+  "name": "Artífice / Mecânica Base (F)",
+  "anchor": [
+    0.5,
+    0.7778
+  ],
+  "width": 136,
+  "height": 126,
+  "bbox": [
+    47,
+    21,
+    183,
+    147
+  ],
+  "total_unique_bitmaps": 74,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 179.2,
+  "atlas_dimensions": [
+    2048,
+    1024
+  ],
+  "id": "PC_FEMALE_000005",
+  "gender": "FEMALE",
+  "tier": 1,
+  "res_code_num": 5,
+  "swf_hash": "49594e35d37179abd076b8834bd1a51d",
+  "feet_y": 98
+}

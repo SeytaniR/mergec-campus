@@ -1,0 +1,48 @@
+{
+  "name": "Phỉ Thúy Châu",
+  "anchor": [
+    0.5,
+    0.8563
+  ],
+  "width": 154,
+  "height": 167,
+  "bbox": [
+    179,
+    145,
+    333,
+    312
+  ],
+  "total_unique_bitmaps": 74,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 206.4,
+  "atlas_dimensions": [
+    2048,
+    1024
+  ],
+  "id": "creature_001190",
+  "db_id": "1813",
+  "res_code_num": 1190,
+  "swf_hash": "f451e0c75b6b13b6d26897870fdf10ec",
+  "feet_y": 143
+}

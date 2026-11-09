@@ -1,0 +1,49 @@
+{
+  "name": "Caçadora / Arqueira Base (F)",
+  "anchor": [
+    0.5,
+    0.8083
+  ],
+  "width": 158,
+  "height": 120,
+  "bbox": [
+    18,
+    9,
+    176,
+    129
+  ],
+  "total_unique_bitmaps": 74,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 188.3,
+  "atlas_dimensions": [
+    2048,
+    1024
+  ],
+  "id": "PC_FEMALE_000003",
+  "gender": "FEMALE",
+  "tier": 1,
+  "res_code_num": 3,
+  "swf_hash": "530310cee6d8d9ddc9cbb523bb6f58e9",
+  "feet_y": 97
+}

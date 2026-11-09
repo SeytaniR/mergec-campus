@@ -1,0 +1,48 @@
+{
+  "name": "Thiên Không Long",
+  "anchor": [
+    0.5,
+    0.8368
+  ],
+  "width": 302,
+  "height": 288,
+  "bbox": [
+    105,
+    53,
+    407,
+    341
+  ],
+  "total_unique_bitmaps": 82,
+  "animations_count": 64,
+  "total_animation_frames": 779,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 730.1,
+  "atlas_dimensions": [
+    4096,
+    2048
+  ],
+  "id": "creature_001265",
+  "db_id": "2148",
+  "res_code_num": 1265,
+  "swf_hash": "3c762206d017ca6b0ced39f734da73ab",
+  "feet_y": 241
+}

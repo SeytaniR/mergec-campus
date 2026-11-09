@@ -1,0 +1,48 @@
+{
+  "name": "Á Cổ Thú",
+  "anchor": [
+    0.5,
+    0.8187
+  ],
+  "width": 232,
+  "height": 160,
+  "bbox": [
+    140,
+    169,
+    372,
+    329
+  ],
+  "total_unique_bitmaps": 82,
+  "animations_count": 64,
+  "total_animation_frames": 779,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 518.2,
+  "atlas_dimensions": [
+    2048,
+    2048
+  ],
+  "id": "creature_001263",
+  "db_id": "2161",
+  "res_code_num": 1263,
+  "swf_hash": "dda272bb0ddf478c93592c59ea4b3061",
+  "feet_y": 131
+}
