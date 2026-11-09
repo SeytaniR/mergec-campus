@@ -117,6 +117,9 @@ async function bootstrapMergecCampus() {
   ) {
     const proto = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
     authBridge.connectRemoteServer(`${proto}//${window.location.host}`);
+  } else {
+    // Default Azure VPS Authoritative Server (WSS with Let's Encrypt via sslip.io)
+    authBridge.connectRemoteServer('wss://40-65-63-193.sslip.io');
   }
 
   // 6. Start ECS Main Loop

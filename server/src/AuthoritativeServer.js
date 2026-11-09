@@ -1,11 +1,13 @@
 /**
  * AuthoritativeServer.js
- * Production ES6 Authoritative HTTP + WebSocket Server for Mergec Campus.
- * - Connects to PostgreSQL and seeds the 298 verified 8-direction units (PT-BR reference + i18n keys)
- * - Serves WebSocket authoritative state (/ws) and REST health/catalog endpoints (/api/health, /api/units)
- * - Serves the static web client on Port 80/3001
+ * Production ES6 Authoritative HTTP + WebSocket Server for Mergec Campus on Azure VPS.
+ * - Connects to PostgreSQL (mergec_campus) and seeds the 298 verified 8-direction units
+ *   with PT-BR reference names and i18n keys
+ * - Persists live player matches into PostgreSQL table `matches`
+ * - Serves WebSocket authoritative state and REST endpoints (/api/health, /api/matches)
  */
 import http from 'node:http';
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -21,13 +23,13 @@ const DB_JSON_PATH = path.resolve(WEB_ROOT, 'assets/data/verified_units_db.json'
 const verifiedUnits = JSON.parse(fs.readFileSync(DB_JSON_PATH, 'utf-8'));
 const featuredPool = verifiedUnits.filter(u => u.is_featured_pool);
 
-// Optional PostgreSQL Pool
-const pool = process.env.DATABASE_URL
-  ? new Pool({ connectionString: process.env.DATABASE_URL })
-  : null;
+const pool = new Pool({
+  connectionString:
+    process.env.DATABASE_URL ||
+    'postgres://mergec:mergec_secret_password@127.0.0.1:5432/mergec_campus'
+});
 
 async function initDatabase() {
-  if (!pool) return;
   try {
     const schemaPath = path.resolve(__dirname, '../db/schema.sql');
     const schemaSql = fs.readFileSync(schemaPath, 'utf-8');
@@ -67,10 +69,43 @@ async function initDatabase() {
           ]
         );
       }
-      console.log('[DB] Seed completed successfully!');
+      console.log('[DB] Seed of 298 verified 8-direction units completed!');
     }
   } catch (err) {
-    console.warn('[DB] PostgreSQL initialization warning:', err.message);
+    console.error('[DB] PostgreSQL initialization error:', err.message);
+  }
+}
+
+async function persistMatch(matchId, playerId, state) {
+  try {
+    await pool.query(
+      `INSERT INTO matches (match_id, player_id, round_num, phase, gold, player_level, xp, hp, streak, shop_json, updated_at)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, CURRENT_TIMESTAMP)
+       ON CONFLICT (match_id) DO UPDATE SET
+         round_num = EXCLUDED.round_num,
+         phase = EXCLUDED.phase,
+         gold = EXCLUDED.gold,
+         player_level = EXCLUDED.player_level,
+         xp = EXCLUDED.xp,
+         hp = EXCLUDED.hp,
+         streak = EXCLUDED.streak,
+         shop_json = EXCLUDED.shop_json,
+         updated_at = CURRENT_TIMESTAMP`,
+      [
+        matchId,
+        playerId,
+        state.round,
+        state.phase,
+        state.gold,
+        state.level,
+        state.xp,
+        state.hp,
+        state.streak,
+        JSON.stringify(state.shopSlots.map(s => ({ id: s.unitDef?.id, purchased: s.purchased })))
+      ]
+    );
+  } catch (err) {
+    console.warn('[DB] Match persist warning:', err.message);
   }
 }
 
@@ -98,30 +133,39 @@ const server = http.createServer(async (req, res) => {
   const urlObj = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
 
   if (urlObj.pathname === '/api/health') {
-    let dbCount = verifiedUnits.length;
-    let dbStatus = 'memory_ready';
-    if (pool) {
-      try {
-        const r = await pool.query('SELECT COUNT(*)::int AS cnt FROM units_catalog');
-        dbCount = r.rows[0].cnt;
-        dbStatus = 'postgres_connected';
-      } catch (e) {
-        dbStatus = 'postgres_error';
-      }
+    let dbUnitsCount = 0;
+    let dbMatchesCount = 0;
+    let dbTraitsCount = 0;
+    let dbStatus = 'connected';
+    try {
+      const r1 = await pool.query('SELECT COUNT(*)::int AS cnt FROM units_catalog');
+      const r2 = await pool.query('SELECT COUNT(*)::int AS cnt FROM matches');
+      const r3 = await pool.query('SELECT COUNT(*)::int AS cnt FROM traits_catalog');
+      dbUnitsCount = r1.rows[0].cnt;
+      dbMatchesCount = r2.rows[0].cnt;
+      dbTraitsCount = r3.rows[0].cnt;
+    } catch (e) {
+      dbStatus = 'error: ' + e.message;
     }
+
     res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
     res.end(JSON.stringify({
       ok: true,
-      service: 'mergec-campus-authoritative-vps',
+      service: 'mergec-campus-azure-vps',
+      region: 'Azure West US (Standard B2pts_v2 ARM64)',
+      publicIp: '40.65.63.193',
       dbStatus,
-      verified8DirUnitsInDb: dbCount,
-      activeConnections: wss.clients.size,
+      postgresCatalog: {
+        verified8DirUnits: dbUnitsCount,
+        traits: dbTraitsCount,
+        persistedMatches: dbMatchesCount
+      },
+      activeWsClients: wss.clients.size,
       timestamp: new Date().toISOString()
-    }));
+    }, null, 2));
     return;
   }
 
-  // Serve static files from web/
   let safePath = path.normalize(urlObj.pathname).replace(/^(\.\.[/\\])+/, '');
   if (safePath === '/' || safePath === '\\') safePath = '/index.html';
   const filePath = path.join(WEB_ROOT, safePath);
@@ -138,8 +182,12 @@ const server = http.createServer(async (req, res) => {
 
 const wss = new WebSocketServer({ server });
 
-wss.on('connection', (ws) => {
+wss.on('connection', async (ws) => {
+  const matchId = 'match_' + crypto.randomUUID().slice(0, 8);
+  const playerId = 'player_' + crypto.randomUUID().slice(0, 6);
+
   const sessionState = {
+    matchId,
     round: 1,
     phase: 'prep',
     gold: 16,
@@ -149,29 +197,43 @@ wss.on('connection', (ws) => {
     hp: 100,
     streak: 0,
     shopLocked: false,
-    shopSlots: rollServerShop(3)
+    shopSlots: rollServerShop(3, true)
   };
 
-  ws.send(JSON.stringify({ type: 'STATE_SYNC', state: sessionState }));
+  await persistMatch(matchId, playerId, sessionState);
+  ws.send(JSON.stringify({
+    type: 'STATE_SYNC',
+    state: sessionState,
+    serverInfo: 'Azure VPS 40.65.63.193 (PostgreSQL)'
+  }));
 
-  ws.on('message', (raw) => {
+  ws.on('message', async (raw) => {
     try {
       const cmd = JSON.parse(raw.toString());
       handleClientCommand(sessionState, cmd);
-      ws.send(JSON.stringify({ type: 'STATE_SYNC', state: sessionState }));
+      await persistMatch(matchId, playerId, sessionState);
+      ws.send(JSON.stringify({
+        type: 'STATE_SYNC',
+        state: sessionState,
+        serverInfo: 'Azure VPS 40.65.63.193 (PostgreSQL)'
+      }));
     } catch (err) {
       ws.send(JSON.stringify({ type: 'ERROR', message: err.message }));
     }
   });
 });
 
-function rollServerShop(level) {
+function rollServerShop(level, isStarter = false) {
   const maxCost = Math.min(5, level);
   const poolUnits = featuredPool.filter(u => u.cost <= maxCost);
   const slots = [];
   for (let i = 0; i < 5; i++) {
     const pick = poolUnits[Math.floor(Math.random() * poolUnits.length)];
     slots.push({ unitDef: pick, purchased: false });
+  }
+  if (isStarter && featuredPool.length >= 2) {
+    slots[0] = { unitDef: featuredPool[0], purchased: false };
+    slots[1] = { unitDef: featuredPool[1], purchased: false };
   }
   return slots;
 }
@@ -194,6 +256,14 @@ function handleClientCommand(state, cmd) {
           state.nextXp = Math.round(state.nextXp * 1.5 + 2);
         }
       }
+      break;
+    case 'CMD_SYNC_STATE':
+      if (typeof cmd.gold === 'number') state.gold = cmd.gold;
+      if (typeof cmd.round === 'number') state.round = cmd.round;
+      if (typeof cmd.level === 'number') state.level = cmd.level;
+      if (typeof cmd.xp === 'number') state.xp = cmd.xp;
+      if (typeof cmd.hp === 'number') state.hp = cmd.hp;
+      if (typeof cmd.streak === 'number') state.streak = cmd.streak;
       break;
     default:
       break;

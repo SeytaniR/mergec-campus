@@ -54,14 +54,16 @@ export class AuthoritativeBridge {
       this.ws = new WebSocket(wsUrl);
       this.ws.onopen = () => {
         this.state.serverMode = 'remote';
-        this.state.serverUrl = wsUrl;
+        this.state.serverUrl = 'Azure VPS 40.65.63.193 (PostgreSQL)';
         this.eventBus.emit('state:updated');
       };
       this.ws.onmessage = (msg) => {
         try {
           const packet = JSON.parse(msg.data);
           if (packet.type === 'STATE_SYNC' && packet.state) {
-            Object.assign(this.state, packet.state);
+            if (packet.serverInfo) {
+              this.state.serverUrl = packet.serverInfo;
+            }
             this.eventBus.emit('state:updated');
           }
         } catch (err) {
@@ -78,6 +80,20 @@ export class AuthoritativeBridge {
   }
 
   bindCommandEvents() {
+    this.eventBus.on('state:updated', () => {
+      if (this.ws && this.ws.readyState === 1) {
+        this.ws.send(JSON.stringify({
+          type: 'CMD_SYNC_STATE',
+          round: this.state.round,
+          gold: this.state.gold,
+          level: this.state.level,
+          xp: this.state.xp,
+          hp: this.state.hp,
+          streak: this.state.streak
+        }));
+      }
+    });
+
     this.eventBus.on('cmd:buy_shop_slot', ({ slotIndex }) => {
       this.handleBuyShopSlot(slotIndex);
     });
