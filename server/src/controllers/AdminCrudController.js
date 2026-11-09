@@ -13,15 +13,16 @@ export class AdminCrudController {
     try {
       // 1. GET /api/admin/bootstrap -> Full snapshot of all game tables
       if (req.method === 'GET' && pathname === '/api/admin/bootstrap') {
-        const [config, units, traits, vfx, i18n, matches] = await Promise.all([
+        const [config, units, traits, vfx, i18n, matches, arenaMeshes] = await Promise.all([
           this.db.getGameConfig(),
           this.db.getAllUnitsFormatted(),
           this.db.getAllTraitsFormatted(),
           this.db.getAllVfx(),
           this.db.getAllI18n(),
-          this.db.getRecentMatches()
+          this.db.getRecentMatches(),
+          this.db.getAllArenaMeshes()
         ]);
-        return this.sendJson(res, 200, { ok: true, config, units, traits, vfx, i18n, matches });
+        return this.sendJson(res, 200, { ok: true, config, units, traits, vfx, i18n, matches, arenaMeshes });
       }
 
       // 2. PUT /api/admin/config -> Update Economy & Damage/Merge Calculation Formulas
@@ -157,7 +158,9 @@ export class AdminCrudController {
           ]
         );
         await this.onLiveConfigChanged();
-        return this.sendJson(res, 200, { ok: true, unitId });
+        const allUnits = await this.db.getAllUnitsFormatted();
+        const savedUnit = allUnits.find(u => u.id === unitId) || body;
+        return this.sendJson(res, 200, { ok: true, unitId, unit: savedUnit });
       }
 
       // 4. DELETE /api/admin/units/:id -> Delete unit
@@ -195,7 +198,9 @@ export class AdminCrudController {
           ]
         );
         await this.onLiveConfigChanged();
-        return this.sendJson(res, 200, { ok: true, traitKey });
+        const traits = await this.db.getAllTraitsFormatted();
+        const savedTrait = traits.find(t => t.trait_key === traitKey) || body;
+        return this.sendJson(res, 200, { ok: true, traitKey, trait: savedTrait });
       }
 
       // 6. DELETE /api/admin/traits/:key
@@ -206,53 +211,146 @@ export class AdminCrudController {
         return this.sendJson(res, 200, { ok: true, deleted: key });
       }
 
-      // 7. PUT /api/admin/vfx/:id -> Update VFX parameters
-      if (req.method === 'PUT' && pathname.startsWith('/api/admin/vfx/')) {
-        const vfxId = decodeURIComponent(pathname.replace('/api/admin/vfx/', ''));
+      // 7. POST or PUT /api/admin/vfx -> Upsert VFX parameters
+      if ((req.method === 'POST' || req.method === 'PUT') && pathname.startsWith('/api/admin/vfx')) {
         const body = await this.readJsonBody(req);
+        const vfxId = pathname.startsWith('/api/admin/vfx/')
+          ? decodeURIComponent(pathname.replace('/api/admin/vfx/', ''))
+          : body.vfx_id;
         await this.db.pool.query(
-          `UPDATE vfx_catalog SET
-            name_ptbr = $1,
-            frame_duration = $2,
-            default_scale = $3,
-            blend_mode = $4
-           WHERE vfx_id = $5`,
+          `INSERT INTO vfx_catalog (vfx_id, name_ptbr, frame_duration, default_scale, blend_mode, atlas_path, thumb_path)
+           VALUES ($1, $2, $3, $4, $5, $6, $7)
+           ON CONFLICT (vfx_id) DO UPDATE SET
+             name_ptbr = EXCLUDED.name_ptbr,
+             frame_duration = EXCLUDED.frame_duration,
+             default_scale = EXCLUDED.default_scale,
+             blend_mode = EXCLUDED.blend_mode`,
           [
+            vfxId,
             body.name_ptbr,
             Number(body.frame_duration ?? 0.055),
             Number(body.default_scale ?? 1.15),
             body.blend_mode || 'ADD',
-            vfxId
+            body.atlas_path || `assets/effects/${vfxId}/atlas.json`,
+            body.thumb_path || `assets/effects/${vfxId}/thumb.png`
           ]
         );
         await this.onLiveConfigChanged();
-        return this.sendJson(res, 200, { ok: true, vfxId });
+        const vfxList = await this.db.getAllVfx();
+        const savedVfx = vfxList.find(v => v.vfx_id === vfxId) || body;
+        return this.sendJson(res, 200, { ok: true, vfxId, vfx: savedVfx });
       }
 
-      // 8. PUT /api/admin/i18n -> Upsert i18n key translation
-      if (req.method === 'PUT' && pathname === '/api/admin/i18n') {
+      // 7b. DELETE /api/admin/vfx/:id
+      if (req.method === 'DELETE' && pathname.startsWith('/api/admin/vfx/')) {
+        const vfxId = decodeURIComponent(pathname.replace('/api/admin/vfx/', ''));
+        await this.db.pool.query('DELETE FROM vfx_catalog WHERE vfx_id = $1', [vfxId]);
+        await this.onLiveConfigChanged();
+        return this.sendJson(res, 200, { ok: true, deleted: vfxId });
+      }
+
+      // 8. POST or PUT /api/admin/i18n -> Upsert i18n key translation
+      if ((req.method === 'POST' || req.method === 'PUT') && pathname === '/api/admin/i18n') {
         const body = await this.readJsonBody(req);
+        const row = {
+          i18n_key: body.i18n_key,
+          locale: body.locale || 'pt-BR',
+          text_value: body.text_value,
+          ptbr_reference: body.ptbr_reference || ''
+        };
         await this.db.pool.query(
           `INSERT INTO i18n_translations (i18n_key, locale, text_value, ptbr_reference)
            VALUES ($1, $2, $3, $4)
            ON CONFLICT (i18n_key, locale) DO UPDATE SET
              text_value = EXCLUDED.text_value,
              ptbr_reference = EXCLUDED.ptbr_reference`,
-          [body.i18n_key, body.locale || 'pt-BR', body.text_value, body.ptbr_reference || '']
+          [row.i18n_key, row.locale, row.text_value, row.ptbr_reference]
         );
         await this.onLiveConfigChanged();
+        return this.sendJson(res, 200, { ok: true, i18n: row });
+      }
+
+      // 8b. DELETE /api/admin/i18n
+      if (req.method === 'DELETE' && pathname === '/api/admin/i18n') {
+        const urlObj = new URL(req.url, 'http://localhost');
+        const key = urlObj.searchParams.get('key');
+        const locale = urlObj.searchParams.get('locale') || 'pt-BR';
+        await this.db.pool.query('DELETE FROM i18n_translations WHERE i18n_key = $1 AND locale = $2', [key, locale]);
+        await this.onLiveConfigChanged();
+        return this.sendJson(res, 200, { ok: true, deleted: key });
+      }
+
+      // 9. DELETE /api/admin/matches -> Delete match records
+      if (req.method === 'DELETE' && pathname.startsWith('/api/admin/matches')) {
+        const matchId = pathname.replace('/api/admin/matches', '').replace(/^\//, '');
+        if (!matchId || matchId === 'ALL') {
+          await this.db.pool.query('DELETE FROM matches');
+        } else {
+          await this.db.pool.query('DELETE FROM matches WHERE match_id = $1', [decodeURIComponent(matchId)]);
+        }
         return this.sendJson(res, 200, { ok: true });
       }
 
-      // 9. DELETE /api/admin/matches/:id -> Delete match record
-      if (req.method === 'DELETE' && pathname.startsWith('/api/admin/matches/')) {
-        const matchId = decodeURIComponent(pathname.replace('/api/admin/matches/', ''));
-        if (matchId === 'ALL') {
-          await this.db.pool.query('DELETE FROM matches');
-        } else {
-          await this.db.pool.query('DELETE FROM matches WHERE match_id = $1', [matchId]);
-        }
-        return this.sendJson(res, 200, { ok: true, deleted: matchId });
+      // 10. GET /api/admin/arena-meshes -> List all 2.5D Arena Meshes
+      if (req.method === 'GET' && pathname === '/api/admin/arena-meshes') {
+        const arenaMeshes = await this.db.getAllArenaMeshes();
+        return this.sendJson(res, 200, { ok: true, arenaMeshes });
+      }
+
+      // 11. POST /api/admin/arena-meshes/reset -> Restore calibrated 2.5D Arena Meshes
+      if (req.method === 'POST' && pathname === '/api/admin/arena-meshes/reset') {
+        await this.db.seedArenaMeshes(true);
+        const arenaMeshes = await this.db.getAllArenaMeshes();
+        await this.onLiveConfigChanged();
+        return this.sendJson(res, 200, { ok: true, arenaMeshes });
+      }
+
+      // 12. POST or PUT /api/admin/arena-meshes -> Upsert a 2.5D Arena Mesh
+      if ((req.method === 'POST' || req.method === 'PUT') && pathname.startsWith('/api/admin/arena-meshes')) {
+        const body = await this.readJsonBody(req);
+        const meshId = body.mesh_id;
+        await this.db.pool.query(
+          `INSERT INTO arena_meshes (
+             mesh_id, name_ptbr, mesh_type, enabled, color_hex, alpha, speed, intensity, blend_mode, points_json, params_json
+           ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)
+           ON CONFLICT (mesh_id) DO UPDATE SET
+             name_ptbr = EXCLUDED.name_ptbr,
+             mesh_type = EXCLUDED.mesh_type,
+             enabled = EXCLUDED.enabled,
+             color_hex = EXCLUDED.color_hex,
+             alpha = EXCLUDED.alpha,
+             speed = EXCLUDED.speed,
+             intensity = EXCLUDED.intensity,
+             blend_mode = EXCLUDED.blend_mode,
+             points_json = EXCLUDED.points_json,
+             params_json = EXCLUDED.params_json`,
+          [
+            meshId,
+            body.name_ptbr || meshId,
+            body.mesh_type || 'water_caustics',
+            Boolean(body.enabled ?? true),
+            body.color_hex || '#38bdf8',
+            Number(body.alpha ?? 0.65),
+            Number(body.speed ?? 1.0),
+            Number(body.intensity ?? 1.0),
+            body.blend_mode || 'screen',
+            JSON.stringify(body.points || []),
+            JSON.stringify(body.params || {})
+          ]
+        );
+        const arenaMeshes = await this.db.getAllArenaMeshes();
+        const savedMesh = arenaMeshes.find(m => m.mesh_id === meshId) || body;
+        await this.onLiveConfigChanged();
+        return this.sendJson(res, 200, { ok: true, mesh: savedMesh, arenaMeshes });
+      }
+
+      // 13. DELETE /api/admin/arena-meshes/:id
+      if (req.method === 'DELETE' && pathname.startsWith('/api/admin/arena-meshes/')) {
+        const meshId = decodeURIComponent(pathname.replace('/api/admin/arena-meshes/', ''));
+        await this.db.pool.query('DELETE FROM arena_meshes WHERE mesh_id = $1', [meshId]);
+        const arenaMeshes = await this.db.getAllArenaMeshes();
+        await this.onLiveConfigChanged();
+        return this.sendJson(res, 200, { ok: true, deleted: meshId, arenaMeshes });
       }
 
       return this.sendJson(res, 404, { ok: false, error: 'Admin endpoint not found' });

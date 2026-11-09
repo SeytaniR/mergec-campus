@@ -532,6 +532,25 @@ html, body {
   object-fit: contain;
 }
 
+.arena-canvas-editor-wrap {
+  width: 100%;
+  background: #050811;
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+#admin-arena-mesh-canvas {
+  width: 100%;
+  max-height: 54dvh;
+  height: auto;
+  object-fit: contain;
+  cursor: crosshair;
+  touch-action: none;
+}
+
 /* i18n & Tables */
 .i18n-quick-form {
   display: grid;

@@ -118,4 +118,23 @@ export class AdminApiService {
       method: 'DELETE'
     });
   }
+
+  async saveArenaMesh(meshPayload) {
+    return this.request('/api/admin/arena-meshes', {
+      method: 'POST',
+      body: JSON.stringify(meshPayload)
+    });
+  }
+
+  async deleteArenaMesh(meshId) {
+    return this.request(`/api/admin/arena-meshes/${encodeURIComponent(meshId)}`, {
+      method: 'DELETE'
+    });
+  }
+
+  async resetArenaMeshes() {
+    return this.request('/api/admin/arena-meshes/reset', {
+      method: 'POST'
+    });
+  }
 }

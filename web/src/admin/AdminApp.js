@@ -8,6 +8,7 @@ import { EconomyFormulasTab } from './tabs/EconomyFormulasTab.js';
 import { UnitsCrudTab } from './tabs/UnitsCrudTab.js';
 import { TraitsCrudTab } from './tabs/TraitsCrudTab.js';
 import { VfxCrudTab } from './tabs/VfxCrudTab.js';
+import { ArenaMeshCrudTab } from './tabs/ArenaMeshCrudTab.js';
 import { I18nCrudTab } from './tabs/I18nCrudTab.js';
 import { MatchesMonitorTab } from './tabs/MatchesMonitorTab.js';
 
@@ -20,6 +21,7 @@ class AdminStudioCoordinator {
       units: [],
       traits: [],
       vfx: [],
+      arenaMeshes: [],
       i18n: [],
       matches: []
     };
@@ -32,6 +34,7 @@ class AdminStudioCoordinator {
       units: new UnitsCrudTab(this.api, refresh, showToast),
       traits: new TraitsCrudTab(this.api, refresh, showToast),
       vfx: new VfxCrudTab(this.api, refresh, showToast),
+      arenaMeshes: new ArenaMeshCrudTab(this.api, refresh, showToast),
       i18n: new I18nCrudTab(this.api, refresh, showToast),
       matches: new MatchesMonitorTab(this.api, refresh, showToast)
     };
@@ -68,13 +71,14 @@ class AdminStudioCoordinator {
         units: bootstrap.units || [],
         traits: bootstrap.traits || [],
         vfx: bootstrap.vfx || [],
+        arenaMeshes: bootstrap.arenaMeshes || [],
         i18n: bootstrap.i18n || [],
         matches: bootstrap.matches || []
       };
 
       this.updateCountsBadge();
       if (statusEl) {
-        statusEl.textContent = `🟢 PostgreSQL Online (${this.data.units.length} Unidades)`;
+        statusEl.textContent = `🟢 PostgreSQL Online (${this.data.units.length} Unidades • ${this.data.arenaMeshes.length} Malhas 2.5D)`;
         statusEl.className = 'db-status-pill online';
       }
       if (announce) {
@@ -98,6 +102,7 @@ class AdminStudioCoordinator {
     setBadge('badge-count-units', this.data.units.length);
     setBadge('badge-count-traits', this.data.traits.length);
     setBadge('badge-count-vfx', this.data.vfx.length);
+    setBadge('badge-count-arena-meshes', this.data.arenaMeshes.length);
     setBadge('badge-count-i18n', this.data.i18n.length);
     setBadge('badge-count-matches', this.data.matches.length);
   }
@@ -118,6 +123,8 @@ class AdminStudioCoordinator {
       this.tabs.traits.render(container, this.data.traits);
     } else if (this.activeTab === 'vfx') {
       this.tabs.vfx.render(container, this.data.vfx);
+    } else if (this.activeTab === 'arenaMeshes') {
+      this.tabs.arenaMeshes.render(container, this.data.arenaMeshes);
     } else if (this.activeTab === 'i18n') {
       this.tabs.i18n.render(container, this.data.i18n);
     } else if (this.activeTab === 'matches') {

@@ -11,6 +11,7 @@ const { Pool } = pg;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const WEB_ROOT = path.resolve(__dirname, '../../../web');
 const DB_JSON_PATH = path.resolve(WEB_ROOT, 'assets/data/verified_units_db.json');
+const DEFAULT_MESHES_PATH = path.resolve(WEB_ROOT, 'assets/data/default_arena_meshes.json');
 
 const DEFAULT_TRAITS = [
   { key: 'academy', type: 'origin', icon: '🎓', namePtBr: 'Academia Mágica', descPtBr: 'Concede +{bonus} de Mana inicial e +{ap}% de Poder de Habilidade.', thresholds: [2, 4, 6], bonuses: { 2: { bonus: 15, ap: 15 }, 4: { bonus: 30, ap: 35 }, 6: { bonus: 50, ap: 65 } } },
@@ -52,6 +53,9 @@ export class DatabaseManager {
         'postgres://mergec:mergec_secret_password@127.0.0.1:5432/mergec_campus'
     });
     this.verifiedUnitsJson = JSON.parse(fs.readFileSync(DB_JSON_PATH, 'utf-8'));
+    this.defaultArenaMeshes = fs.existsSync(DEFAULT_MESHES_PATH)
+      ? JSON.parse(fs.readFileSync(DEFAULT_MESHES_PATH, 'utf-8'))
+      : [];
   }
 
   async init() {
@@ -81,6 +85,41 @@ export class DatabaseManager {
     await this.seedVfx();
     await this.seedUnits();
     await this.seedI18n();
+    await this.seedArenaMeshes();
+  }
+
+  async seedArenaMeshes(forceOverwrite = false) {
+    for (const m of this.defaultArenaMeshes) {
+      await this.pool.query(
+        `INSERT INTO arena_meshes (
+          mesh_id, name_ptbr, mesh_type, enabled, color_hex, alpha, speed, intensity, blend_mode, points_json, params_json
+        ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)
+        ON CONFLICT (mesh_id) DO ${forceOverwrite ? `UPDATE SET
+          name_ptbr = EXCLUDED.name_ptbr,
+          mesh_type = EXCLUDED.mesh_type,
+          enabled = EXCLUDED.enabled,
+          color_hex = EXCLUDED.color_hex,
+          alpha = EXCLUDED.alpha,
+          speed = EXCLUDED.speed,
+          intensity = EXCLUDED.intensity,
+          blend_mode = EXCLUDED.blend_mode,
+          points_json = EXCLUDED.points_json,
+          params_json = EXCLUDED.params_json` : 'NOTHING'}`,
+        [
+          m.mesh_id,
+          m.name_ptbr,
+          m.mesh_type,
+          Boolean(m.enabled ?? true),
+          m.color_hex || '#38bdf8',
+          Number(m.alpha ?? 0.65),
+          Number(m.speed ?? 1.0),
+          Number(m.intensity ?? 1.0),
+          m.blend_mode || 'screen',
+          JSON.stringify(m.points || []),
+          JSON.stringify(m.params || {})
+        ]
+      );
+    }
   }
 
   async seedTraits() {
@@ -256,5 +295,22 @@ export class DatabaseManager {
   async getRecentMatches() {
     const { rows } = await this.pool.query('SELECT * FROM matches ORDER BY updated_at DESC LIMIT 50');
     return rows;
+  }
+
+  async getAllArenaMeshes() {
+    const { rows } = await this.pool.query('SELECT * FROM arena_meshes ORDER BY mesh_id ASC');
+    return rows.map(r => ({
+      mesh_id: r.mesh_id,
+      name_ptbr: r.name_ptbr,
+      mesh_type: r.mesh_type,
+      enabled: Boolean(r.enabled),
+      color_hex: r.color_hex,
+      alpha: Number(r.alpha),
+      speed: Number(r.speed),
+      intensity: Number(r.intensity),
+      blend_mode: r.blend_mode,
+      points: JSON.parse(r.points_json || '[]'),
+      params: JSON.parse(r.params_json || '{}')
+    }));
   }
 }

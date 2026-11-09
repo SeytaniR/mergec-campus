@@ -115,3 +115,17 @@ CREATE TABLE IF NOT EXISTS matches (
     shop_json       TEXT NOT NULL DEFAULT '[]',
     updated_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE IF NOT EXISTS arena_meshes (
+    mesh_id         VARCHAR(64) PRIMARY KEY,
+    name_ptbr       VARCHAR(128) NOT NULL,
+    mesh_type       VARCHAR(48) NOT NULL,
+    enabled         BOOLEAN NOT NULL DEFAULT true,
+    color_hex       VARCHAR(16) NOT NULL DEFAULT '#38bdf8',
+    alpha           NUMERIC(5,2) NOT NULL DEFAULT 0.65,
+    speed           NUMERIC(5,2) NOT NULL DEFAULT 1.00,
+    intensity       NUMERIC(5,2) NOT NULL DEFAULT 1.00,
+    blend_mode      VARCHAR(24) NOT NULL DEFAULT 'screen',
+    points_json     TEXT NOT NULL DEFAULT '[]',
+    params_json     TEXT NOT NULL DEFAULT '{}'
+);

@@ -9,6 +9,7 @@ import { World } from './ecs/World.js';
 import { I18nService } from './i18n/I18nService.js';
 import { syncTraitsFromDatabase } from './data/TraitRegistry.js';
 import { AssetCacheSystem } from './systems/AssetCacheSystem.js';
+import { ArenaEnvironmentSystem } from './systems/ArenaEnvironmentSystem.js';
 import { BoardCoordSystem } from './systems/BoardCoordSystem.js';
 import { UnitRenderSystem } from './systems/UnitRenderSystem.js';
 import { AnimationSystem } from './systems/AnimationSystem.js';
@@ -44,9 +45,13 @@ async function fetchBootstrapCatalog() {
   } catch (err) {
     console.warn('[MergecCampus] Falling back to static JSON catalog:', err);
   }
-  const dbRes = await fetch('assets/data/verified_units_db.json');
+  const [dbRes, meshesRes] = await Promise.all([
+    fetch('assets/data/verified_units_db.json'),
+    fetch('assets/data/default_arena_meshes.json').catch(() => null)
+  ]);
   const verifiedUnits = await dbRes.json();
-  return { config: null, units: verifiedUnits, traits: [], i18n: [] };
+  const arenaMeshes = meshesRes && meshesRes.ok ? await meshesRes.json() : [];
+  return { config: null, units: verifiedUnits, traits: [], i18n: [], arenaMeshes };
 }
 
 async function bootstrapMergecCampus() {
@@ -75,8 +80,8 @@ async function bootstrapMergecCampus() {
   // 2. Initialize Pixi.js Application inside fluid container
   const canvasWrap = document.getElementById('pixi-canvas-wrap');
   const app = new PIXI.Application({
-    width: 920,
-    height: 720,
+    width: 1376,
+    height: 768,
     backgroundColor: 0x070b14,
     antialias: true,
     resolution: Math.min(window.devicePixelRatio || 1, 2),
@@ -85,16 +90,18 @@ async function bootstrapMergecCampus() {
   canvasWrap.appendChild(app.view);
 
   const sceneContainer = new PIXI.Container();
+  const arenaLayer = new PIXI.Container();
   const boardLayer = new PIXI.Container();
   const unitLayer = new PIXI.Container();
   const vfxLayer = new PIXI.Container();
-  sceneContainer.addChild(boardLayer, unitLayer, vfxLayer);
+  sceneContainer.addChild(arenaLayer, boardLayer, unitLayer, vfxLayer);
   app.stage.addChild(sceneContainer);
 
   // 3. Instantiate Single-Responsibility ECS Systems
   const assetCache = new AssetCacheSystem();
   const boardCoords = new BoardCoordSystem(boardLayer);
   const authBridge = new AuthoritativeBridge(world, boardCoords, eventBus, i18n, verifiedUnits);
+  const arenaSystem = new ArenaEnvironmentSystem(arenaLayer, eventBus, () => authBridge.state);
 
   const renderSystem = new UnitRenderSystem(unitLayer, vfxLayer, eventBus);
   const animSystem = new AnimationSystem(assetCache, renderSystem, vfxLayer, eventBus);
@@ -133,6 +140,7 @@ async function bootstrapMergecCampus() {
   hudSystem.countOwnedCopiesInDom = (unitId) => authBridge.countPlayerCopies(unitId, 1);
 
   // 4. Register Systems in ECS Pipeline Order
+  world.registerSystem('ArenaEnvironment', arenaSystem, 5);
   world.registerSystem('BoardCoords', boardCoords, 10);
   world.registerSystem('Merge', mergeSystem, 20);
   world.registerSystem('Synergy', synergySystem, 30);
@@ -141,6 +149,19 @@ async function bootstrapMergecCampus() {
   world.registerSystem('Animation', animSystem, 60);
   world.registerSystem('UnitRender', renderSystem, 70);
   world.registerSystem('Layout', layoutSystem, 80);
+
+  // Apply initial 2.5D Arena Meshes & Perspective Grid before spawning starter units
+  if (Array.isArray(bootstrapData.arenaMeshes) && bootstrapData.arenaMeshes.length > 0) {
+    boardCoords.syncFromArenaMeshes(bootstrapData.arenaMeshes);
+    arenaSystem.syncMeshes(bootstrapData.arenaMeshes);
+  } else {
+    const fallbackRes = await fetch('assets/data/default_arena_meshes.json').catch(() => null);
+    if (fallbackRes && fallbackRes.ok) {
+      const defMeshes = await fallbackRes.json();
+      boardCoords.syncFromArenaMeshes(defMeshes);
+      arenaSystem.syncMeshes(defMeshes);
+    }
+  }
 
   // 5. Initialize Authoritative State & UI HUD
   if (bootstrapData.config) {
@@ -175,9 +196,25 @@ async function bootstrapMergecCampus() {
         }
       }
     }
+    if (Array.isArray(fresh.arenaMeshes) && fresh.arenaMeshes.length > 0) {
+      boardCoords.syncFromArenaMeshes(fresh.arenaMeshes);
+      arenaSystem.syncMeshes(fresh.arenaMeshes);
+      // Reposition units in prep mode to match updated 2.5D grid/bench coordinates
+      if (authBridge.state.phase === 'prep') {
+        for (const id of world.query(['GridCell', 'Transform'])) {
+          const g = world.getComponent(id, 'GridCell');
+          const t = world.getComponent(id, 'Transform');
+          const pos = g.zone === 'bench'
+            ? boardCoords.benchToWorld(g.slotIndex)
+            : boardCoords.boardToWorld(g.col, g.row);
+          t.x = pos.x;
+          t.y = pos.y;
+        }
+      }
+    }
     eventBus.emit('state:updated');
     eventBus.emit('ui:toast', {
-      message: '⚡ Banco de dados atualizado ao vivo via Painel Admin!',
+      message: '⚡ Banco de dados e Malhas 2.5D atualizados ao vivo via Admin!',
       type: 'merge'
     });
   });

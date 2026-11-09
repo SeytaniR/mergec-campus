@@ -162,7 +162,8 @@ export class UnitRenderSystem {
       }
 
       view.root.position.set(transform.x, transform.y);
-      const starScale = 0.72 + (stats.starTier - 1) * 0.13;
+      const depthFactor = 0.88 + Math.max(0, Math.min(1, (transform.y - 230) / 450)) * 0.18;
+      const starScale = (0.72 + (stats.starTier - 1) * 0.13) * depthFactor;
       view.sprite.scale.set(starScale * transform.scale);
       view.root.alpha = stats.alive ? transform.alpha : 0.45;
       view.root.zIndex = transform.isDragging ? 9999 : Math.round(transform.y);
