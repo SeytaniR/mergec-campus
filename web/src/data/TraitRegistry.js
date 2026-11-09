@@ -182,3 +182,31 @@ export const CLASSES_REGISTRY = {
     }
   }
 };
+
+/**
+ * Dynamically synchronizes Origins and Classes from PostgreSQL traits_catalog.
+ * @param {Array<Object>} dbTraits
+ * @param {Object} [i18n]
+ */
+export function syncTraitsFromDatabase(dbTraits, i18n) {
+  if (!Array.isArray(dbTraits)) return;
+  for (const t of dbTraits) {
+    const targetReg = t.trait_type === 'class' ? CLASSES_REGISTRY : ORIGINS_REGISTRY;
+    targetReg[t.trait_key] = {
+      key: t.trait_key,
+      icon: t.icon || '✨',
+      i18nNameKey: t.i18n_name_key,
+      namePtBr: t.name_ptbr,
+      i18nDescKey: t.i18n_desc_key,
+      descPtBr: t.desc_ptbr,
+      thresholds: Array.isArray(t.thresholds) ? t.thresholds : [2, 4],
+      bonuses: t.bonuses || { 2: { bonus: 20 } }
+    };
+    if (i18n) {
+      i18n.dictionaries['pt-BR'][t.i18n_name_key] = t.name_ptbr;
+      if (t.desc_ptbr) {
+        i18n.dictionaries['pt-BR'][t.i18n_desc_key] = t.desc_ptbr;
+      }
+    }
+  }
+}

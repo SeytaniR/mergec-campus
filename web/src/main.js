@@ -7,6 +7,7 @@
 import { EventBus } from './ecs/EventBus.js';
 import { World } from './ecs/World.js';
 import { I18nService } from './i18n/I18nService.js';
+import { syncTraitsFromDatabase } from './data/TraitRegistry.js';
 import { AssetCacheSystem } from './systems/AssetCacheSystem.js';
 import { BoardCoordSystem } from './systems/BoardCoordSystem.js';
 import { UnitRenderSystem } from './systems/UnitRenderSystem.js';
@@ -19,15 +20,54 @@ import { LayoutSystem } from './systems/LayoutSystem.js';
 import { HudUiSystem } from './systems/HudUiSystem.js';
 import { AuthoritativeBridge } from './network/AuthoritativeBridge.js';
 
+function getApiBaseUrl() {
+  if (
+    window.location.hostname &&
+    !window.location.hostname.includes('github.io') &&
+    window.location.protocol.startsWith('http')
+  ) {
+    return window.location.origin;
+  }
+  return 'https://40-65-63-193.sslip.io';
+}
+
+async function fetchBootstrapCatalog() {
+  const apiBase = getApiBaseUrl();
+  try {
+    const res = await fetch(`${apiBase}/api/admin/bootstrap`, { cache: 'no-store' });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && Array.isArray(data.units) && data.units.length > 0) {
+        return data;
+      }
+    }
+  } catch (err) {
+    console.warn('[MergecCampus] Falling back to static JSON catalog:', err);
+  }
+  const dbRes = await fetch('assets/data/verified_units_db.json');
+  const verifiedUnits = await dbRes.json();
+  return { config: null, units: verifiedUnits, traits: [], i18n: [] };
+}
+
 async function bootstrapMergecCampus() {
   const eventBus = new EventBus();
   const i18n = new I18nService(eventBus, 'pt-BR');
   const world = new World(eventBus);
 
-  // 1. Load Verified 8-Direction Units Database (with i18n keys + PT-BR reference names)
-  const dbRes = await fetch('assets/data/verified_units_db.json');
-  const verifiedUnits = await dbRes.json();
+  // 1. Load Live PostgreSQL Catalog (or fallback to verified_units_db.json)
+  const bootstrapData = await fetchBootstrapCatalog();
+  let verifiedUnits = bootstrapData.units;
   i18n.registerDatabaseCatalog(verifiedUnits);
+  if (Array.isArray(bootstrapData.traits) && bootstrapData.traits.length > 0) {
+    syncTraitsFromDatabase(bootstrapData.traits, i18n);
+  }
+  if (Array.isArray(bootstrapData.i18n)) {
+    for (const row of bootstrapData.i18n) {
+      if (i18n.dictionaries[row.locale]) {
+        i18n.dictionaries[row.locale][row.i18n_key] = row.text_value;
+      }
+    }
+  }
 
   const unitsCatalogMap = new Map(verifiedUnits.map(u => [u.id, u]));
   const featuredUnits = verifiedUnits.filter(u => u.is_featured_pool);
@@ -103,8 +143,44 @@ async function bootstrapMergecCampus() {
   world.registerSystem('Layout', layoutSystem, 80);
 
   // 5. Initialize Authoritative State & UI HUD
+  if (bootstrapData.config) {
+    authBridge.applyLiveConfig(bootstrapData.config);
+    authBridge.state.gold = Number(bootstrapData.config.starting_gold ?? 16);
+    authBridge.state.hp = Number(bootstrapData.config.starting_player_hp ?? 100);
+    authBridge.state.level = Number(bootstrapData.config.starting_level ?? 3);
+  }
   authBridge.init();
   hudSystem.init();
+
+  // Hot-reload live database edits from Admin Studio over WebSocket
+  eventBus.on('live:db_changed', async () => {
+    const fresh = await fetchBootstrapCatalog();
+    if (fresh.units && fresh.units.length > 0) {
+      verifiedUnits.length = 0;
+      verifiedUnits.push(...fresh.units);
+      unitsCatalogMap.clear();
+      for (const u of fresh.units) unitsCatalogMap.set(u.id, u);
+      authBridge.featuredPool = fresh.units.filter(u => u.is_featured_pool);
+      combatSystem.featuredUnits = authBridge.featuredPool;
+      i18n.registerDatabaseCatalog(fresh.units);
+    }
+    if (Array.isArray(fresh.traits) && fresh.traits.length > 0) {
+      syncTraitsFromDatabase(fresh.traits, i18n);
+      synergySystem.recalculate();
+    }
+    if (Array.isArray(fresh.i18n)) {
+      for (const row of fresh.i18n) {
+        if (i18n.dictionaries[row.locale]) {
+          i18n.dictionaries[row.locale][row.i18n_key] = row.text_value;
+        }
+      }
+    }
+    eventBus.emit('state:updated');
+    eventBus.emit('ui:toast', {
+      message: '⚡ Banco de dados atualizado ao vivo via Painel Admin!',
+      type: 'merge'
+    });
+  });
 
   const params = new URLSearchParams(window.location.search);
   const wsParam = params.get('ws') || window.DEFAULT_VPS_WS_URL;

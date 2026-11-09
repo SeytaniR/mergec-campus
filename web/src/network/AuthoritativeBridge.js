@@ -32,10 +32,45 @@ export class AuthoritativeBridge {
       shopLocked: false,
       shopSlots: [], // Array of 5 { unitDef, purchased }
       serverMode: 'local',
-      serverUrl: ''
+      serverUrl: '',
+      config: {
+        starting_gold: 16,
+        reroll_cost: 2,
+        xp_buy_cost: 4,
+        xp_buy_amount: 4,
+        round_win_gold: 5,
+        round_loss_gold: 4,
+        interest_per_10_gold: 1,
+        max_interest_gold: 5,
+        streak_threshold: 3,
+        streak_bonus_gold: 2,
+        starting_player_hp: 100,
+        starting_level: 3,
+        max_level: 9,
+        star2_multiplier: 1.8,
+        star3_multiplier: 3.24,
+        star_def_scale: 0.35,
+        mana_per_attack: 15,
+        mana_on_hit_taken: 6,
+        armor_mitigation_k: 100,
+        skill_armor_pen_factor: 0.6,
+        min_basic_damage: 12,
+        min_skill_damage: 35,
+        skill_shield_ratio: 0.4,
+        nature_heal_interval_sec: 2.0
+      }
     };
+    window.__MERGEC_CONFIG__ = this.state.config;
 
     this.ws = null;
+  }
+
+  applyLiveConfig(newConfig) {
+    if (!newConfig) return;
+    Object.assign(this.state.config, newConfig);
+    window.__MERGEC_CONFIG__ = this.state.config;
+    this.eventBus.emit('config:updated', { config: this.state.config });
+    this.eventBus.emit('state:updated');
   }
 
   init() {
@@ -64,7 +99,15 @@ export class AuthoritativeBridge {
             if (packet.serverInfo) {
               this.state.serverUrl = packet.serverInfo;
             }
+            if (packet.config) {
+              this.applyLiveConfig(packet.config);
+            }
             this.eventBus.emit('state:updated');
+          } else if (packet.type === 'LIVE_CONFIG_UPDATED') {
+            if (packet.config) {
+              this.applyLiveConfig(packet.config);
+            }
+            this.eventBus.emit('live:db_changed', packet);
           }
         } catch (err) {
           console.warn('[AuthoritativeBridge] Invalid WS packet:', err);
@@ -168,7 +211,7 @@ export class AuthoritativeBridge {
   }
 
   handleRerollShop() {
-    const cost = 2;
+    const cost = Number(this.state.config?.reroll_cost ?? 2);
     if (this.state.gold < cost) {
       this.eventBus.emit('ui:toast', {
         message: this.i18n.t('toast.shop.no_gold', { cost }),
@@ -181,7 +224,8 @@ export class AuthoritativeBridge {
   }
 
   handleBuyXp() {
-    const cost = 4;
+    const cost = Number(this.state.config?.xp_buy_cost ?? 4);
+    const amount = Number(this.state.config?.xp_buy_amount ?? 4);
     if (this.state.gold < cost) {
       this.eventBus.emit('ui:toast', {
         message: this.i18n.t('toast.shop.no_gold', { cost }),
@@ -190,14 +234,15 @@ export class AuthoritativeBridge {
       return;
     }
     this.state.gold -= cost;
-    this.gainXp(4);
+    this.gainXp(amount);
     this.eventBus.emit('state:updated');
   }
 
   gainXp(amount) {
-    if (this.state.level >= 9) return;
+    const maxLvl = Number(this.state.config?.max_level ?? 9);
+    if (this.state.level >= maxLvl) return;
     this.state.xp += amount;
-    while (this.state.xp >= this.state.nextXp && this.state.level < 9) {
+    while (this.state.xp >= this.state.nextXp && this.state.level < maxLvl) {
       this.state.xp -= this.state.nextXp;
       this.state.level++;
       this.state.nextXp = Math.round(this.state.nextXp * 1.5 + 2);

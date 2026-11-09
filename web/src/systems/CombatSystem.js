@@ -145,8 +145,10 @@ export class CombatSystem {
     }
 
     // Periodic Nature synergy heal
+    const cfg = state.config || {};
+    const healInterval = Number(cfg.nature_heal_interval_sec) || 2.0;
     this.natureHealTimer += dt;
-    if (this.natureHealTimer >= 2.0) {
+    if (this.natureHealTimer >= healInterval) {
       this.natureHealTimer = 0;
       const natureSyn = this.synergySystem.activeSynergies.find(
         s => s.type === 'origin' && s.key === 'nature' && s.activeTier > 0
@@ -251,18 +253,29 @@ export class CombatSystem {
   }
 
   executeBasicAttack(attackerId, targetId, stats, transform, anim, targetStats, targetTransform) {
+    const cfg = this.getGameState()?.config || {};
+    const manaGain = Number(cfg.mana_per_attack ?? 15);
+    const armorK = Number(cfg.armor_mitigation_k ?? 100);
+    const minBasic = Number(cfg.min_basic_damage ?? 12);
+
     anim.action = 3; // Action 3 = Physical Attack
     anim.frameIdx = 0;
     anim.loop = false;
     anim.returnAction = 0;
 
-    stats.mana = Math.min(stats.maxMana, stats.mana + 15);
+    stats.mana = Math.min(stats.maxMana, stats.mana + manaGain);
 
-    const rawDmg = Math.max(12, Math.round(stats.atk * (100 / (100 + targetStats.def))));
+    const rawDmg = Math.max(minBasic, Math.round(stats.atk * (armorK / (armorK + targetStats.def))));
     this.applyDamage(targetId, targetStats, targetTransform, rawDmg, 0xffffff);
   }
 
   executeUltimateSkill(casterId, targetId, stats, transform, anim, targetStats, targetTransform) {
+    const cfg = this.getGameState()?.config || {};
+    const armorK = Number(cfg.armor_mitigation_k ?? 100);
+    const armorPen = Number(cfg.skill_armor_pen_factor ?? 0.6);
+    const minSkill = Number(cfg.min_skill_damage ?? 35);
+    const shieldRatio = Number(cfg.skill_shield_ratio ?? 0.4);
+
     stats.mana = 0;
     anim.action = 7; // Action 7 = Magic Cast
     anim.frameIdx = 0;
@@ -277,16 +290,22 @@ export class CombatSystem {
       scale: 1.15
     });
 
-    const skillDmg = Math.max(35, Math.round(stats.skillDamage * (100 / (100 + targetStats.def * 0.6))));
+    const skillDmg = Math.max(minSkill, Math.round(stats.skillDamage * (armorK / (armorK + targetStats.def * armorPen))));
     this.applyDamage(targetId, targetStats, targetTransform, skillDmg, 0x38bdf8, '💥');
 
     // Apply self shield or heal if part of unit archetype
     if (stats.skillShield > 0) {
-      stats.shield += Math.round(stats.skillShield * 0.4);
+      stats.shield += Math.round(stats.skillShield * shieldRatio);
+    }
+    if (stats.skillHeal > 0) {
+      stats.hp = Math.min(stats.maxHp, stats.hp + Math.round(stats.skillHeal * shieldRatio));
     }
   }
 
   applyDamage(targetId, targetStats, targetTransform, amount, color = 0xffffff, prefix = '-') {
+    const cfg = this.getGameState()?.config || {};
+    const manaOnHit = Number(cfg.mana_on_hit_taken ?? 6);
+
     let remaining = amount;
     if (targetStats.shield > 0) {
       const absorbed = Math.min(targetStats.shield, remaining);
@@ -295,7 +314,7 @@ export class CombatSystem {
     }
 
     targetStats.hp = Math.max(0, targetStats.hp - remaining);
-    targetStats.mana = Math.min(targetStats.maxMana, targetStats.mana + 6);
+    targetStats.mana = Math.min(targetStats.maxMana, targetStats.mana + manaOnHit);
 
     const targetAnim = this.world.getComponent(targetId, 'SpriteAnim');
     if (targetStats.hp <= 0 && targetStats.alive) {
@@ -323,10 +342,18 @@ export class CombatSystem {
 
   onBattleOutcome(playerWon, survivingEnemiesCount) {
     const state = this.getGameState();
+    const cfg = state.config || {};
+    const winGold = Number(cfg.round_win_gold ?? 5);
+    const lossGold = Number(cfg.round_loss_gold ?? 4);
+    const maxInterest = Number(cfg.max_interest_gold ?? 5);
+    const interestPer10 = Number(cfg.interest_per_10_gold ?? 1);
+    const streakThreshold = Number(cfg.streak_threshold ?? 3);
+    const streakBonus = Number(cfg.streak_bonus_gold ?? 2);
+
     if (playerWon) {
       state.streak++;
-      const interest = Math.min(5, Math.floor(state.gold / 10));
-      const reward = 5 + interest + (state.streak >= 3 ? 2 : 0);
+      const interest = Math.min(maxInterest, Math.floor(state.gold / 10) * interestPer10);
+      const reward = winGold + interest + (state.streak >= streakThreshold ? streakBonus : 0);
       state.gold += reward;
 
       this.eventBus.emit('ui:toast', {
@@ -337,7 +364,7 @@ export class CombatSystem {
       state.streak = 0;
       const hpLoss = Math.max(2, survivingEnemiesCount * 3);
       state.hp = Math.max(1, state.hp - hpLoss);
-      state.gold += 4;
+      state.gold += lossGold;
 
       this.eventBus.emit('ui:toast', {
         message: this.i18n.t('toast.combat.defeat', { round: state.round, dmg: hpLoss }),

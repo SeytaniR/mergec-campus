@@ -177,8 +177,10 @@ export class HudUiSystem {
         : this.i18n.t('ui.btn.start_combat');
     }
 
-    this.setText('btn-reroll', this.i18n.t('ui.btn.reroll', { cost: 2 }));
-    this.setText('btn-buy-xp', this.i18n.t('ui.btn.buy_xp', { cost: 4 }));
+    const rerollCost = s.config?.reroll_cost ?? 2;
+    const xpCost = s.config?.xp_buy_cost ?? 4;
+    this.setText('btn-reroll', this.i18n.t('ui.btn.reroll', { cost: rerollCost }));
+    this.setText('btn-buy-xp', this.i18n.t('ui.btn.buy_xp', { cost: xpCost }));
     this.setText('btn-open-codex', this.i18n.t('ui.btn.codex', { count: this.allVerifiedUnits.length }));
     this.setText(
       'btn-lock-shop',
