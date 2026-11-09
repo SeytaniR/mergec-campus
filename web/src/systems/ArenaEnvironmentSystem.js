@@ -299,31 +299,52 @@ export class ArenaEnvironmentSystem {
   drawLanternHaloMesh(gfx, b, color, alpha, intensity, t) {
     const cx = b.cx;
     const cy = b.cy;
-    const pulse = 0.82 + 0.18 * Math.sin(t * 3.1);
-    const rad = Math.max(b.w, b.h) * 0.58 * intensity * pulse;
+    const pulse = 0.85 + 0.15 * Math.sin(t * 3.1);
+    const rad = Math.max(b.w, b.h) * 0.55 * intensity * pulse;
 
-    gfx.beginFill(color, alpha * 0.26);
-    gfx.drawCircle(cx, cy, rad);
+    // Soft multi-layered volumetric glow
+    gfx.beginFill(color, alpha * 0.11);
+    gfx.drawCircle(cx, cy, rad * 1.45);
     gfx.endFill();
 
-    gfx.beginFill(0xffffff, alpha * 0.45);
-    gfx.drawCircle(cx, cy, rad * 0.36);
+    gfx.beginFill(color, alpha * 0.18);
+    gfx.drawCircle(cx, cy, rad * 0.9);
     gfx.endFill();
+
+    gfx.beginFill(0xffffff, alpha * 0.35);
+    gfx.drawCircle(cx, cy, rad * 0.32);
+    gfx.endFill();
+
+    // Orbiting fireflies / mana motes
+    for (let i = 0; i < 3; i++) {
+      const ang = t * 1.6 + i * 2.1;
+      const mx = cx + Math.cos(ang) * (rad * 0.85);
+      const my = cy + Math.sin(ang * 1.3) * (rad * 0.55);
+      gfx.beginFill(0xffffff, alpha * 0.75);
+      gfx.drawCircle(mx, my, 1.8);
+      gfx.endFill();
+    }
   }
 
   drawCrystalGlowMesh(gfx, points, color, alpha, intensity, t) {
     for (let i = 0; i < points.length; i++) {
       const p = points[i];
-      const bobY = Math.sin(t * 2.4 + i * 1.7) * 6;
+      const bobY = Math.sin(t * 2.4 + i * 1.7) * 5;
       const cx = Number(p.x) || 0;
       const cy = (Number(p.y) || 0) + bobY;
 
-      gfx.beginFill(color, alpha * 0.32);
-      gfx.drawCircle(cx, cy, 24 * intensity);
+      // Soft crystal aura + sparkle core
+      gfx.beginFill(color, alpha * 0.14);
+      gfx.drawCircle(cx, cy, 22 * intensity);
       gfx.endFill();
 
-      gfx.lineStyle(1.6, 0xffffff, alpha * 0.75);
-      gfx.drawEllipse(cx, cy, 14 * intensity, 22 * intensity);
+      gfx.beginFill(color, alpha * 0.24);
+      gfx.drawCircle(cx, cy, 12 * intensity);
+      gfx.endFill();
+
+      gfx.beginFill(0xffffff, alpha * 0.65);
+      gfx.drawCircle(cx, cy - 2, 3.2 * intensity);
+      gfx.endFill();
     }
   }
 }

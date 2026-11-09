@@ -171,15 +171,15 @@
     "mesh_type": "lantern_halo",
     "enabled": true,
     "color_hex": "#38bdf8",
-    "alpha": 0.75,
+    "alpha": 0.65,
     "speed": 1.2,
-    "intensity": 1.25,
+    "intensity": 1.1,
     "blend_mode": "screen",
     "points": [
-      { "x": 192, "y": 402 },
-      { "x": 248, "y": 402 },
-      { "x": 248, "y": 468 },
-      { "x": 192, "y": 468 }
+      { "x": 201, "y": 424 },
+      { "x": 241, "y": 424 },
+      { "x": 241, "y": 464 },
+      { "x": 201, "y": 464 }
     ],
     "params": {}
   },
@@ -189,15 +189,15 @@
     "mesh_type": "lantern_halo",
     "enabled": true,
     "color_hex": "#38bdf8",
-    "alpha": 0.75,
+    "alpha": 0.65,
     "speed": 1.2,
-    "intensity": 1.25,
+    "intensity": 1.1,
     "blend_mode": "screen",
     "points": [
-      { "x": 1128, "y": 402 },
-      { "x": 1184, "y": 402 },
-      { "x": 1184, "y": 468 },
-      { "x": 1128, "y": 468 }
+      { "x": 1135, "y": 424 },
+      { "x": 1175, "y": 424 },
+      { "x": 1175, "y": 464 },
+      { "x": 1135, "y": 464 }
     ],
     "params": {}
   },
@@ -206,10 +206,10 @@
     "name_ptbr": "Cristais Levitantes das Colunas (Esquerda)",
     "mesh_type": "crystal_glow",
     "enabled": true,
-    "color_hex": "#a855f7",
-    "alpha": 0.72,
+    "color_hex": "#38bdf8",
+    "alpha": 0.62,
     "speed": 1.35,
-    "intensity": 1.2,
+    "intensity": 1.0,
     "blend_mode": "screen",
     "points": [
       { "x": 173, "y": 76 },
@@ -223,10 +223,10 @@
     "name_ptbr": "Cristais Levitantes das Colunas (Direita)",
     "mesh_type": "crystal_glow",
     "enabled": true,
-    "color_hex": "#a855f7",
-    "alpha": 0.72,
+    "color_hex": "#38bdf8",
+    "alpha": 0.62,
     "speed": 1.35,
-    "intensity": 1.2,
+    "intensity": 1.0,
     "blend_mode": "screen",
     "points": [
       { "x": 1203, "y": 76 },
