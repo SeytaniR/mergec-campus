@@ -118,17 +118,18 @@ export class AuthoritativeBridge {
     const hero1 = this.featuredPool[0] || this.allVerifiedUnits[0];
     const hero2 = this.featuredPool[1] || this.allVerifiedUnits[1];
 
-    // Deploy 2 units onto player board
+    // Deploy 2 starter units onto player board
     this.spawnUnitOnBoard(hero1, 1, 2, 4);
     this.spawnUnitOnBoard(hero2, 1, 4, 4);
 
-    // Put 2 matching copies of hero1 on bench so buying/spawning 1 more triggers a 2-Star Merge!
+    // Put 1 copy of each on the bench (2 copies owned total -> 1 click away from 2-Star Merge!)
     this.spawnUnitOnBench(hero1, 1);
-    this.spawnUnitOnBench(hero1, 1);
+    this.spawnUnitOnBench(hero2, 1);
 
-    // Ensure slot 0 of shop offers hero1 so user can test 1-click Merge right away!
-    if (this.state.shopSlots.length > 0) {
+    // Offer the 3rd copy in Shop Slots 0 and 1 with ✨ MERGE! badge
+    if (this.state.shopSlots.length >= 2) {
       this.state.shopSlots[0] = { unitDef: hero1, purchased: false };
+      this.state.shopSlots[1] = { unitDef: hero2, purchased: false };
     }
 
     this.eventBus.emit('board:changed');
