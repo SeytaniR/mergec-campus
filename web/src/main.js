@@ -107,8 +107,16 @@ async function bootstrapMergecCampus() {
   hudSystem.init();
 
   const params = new URLSearchParams(window.location.search);
-  if (params.get('ws')) {
-    authBridge.connectRemoteServer(params.get('ws'));
+  const wsParam = params.get('ws') || window.DEFAULT_VPS_WS_URL;
+  if (wsParam) {
+    authBridge.connectRemoteServer(wsParam);
+  } else if (
+    window.location.hostname &&
+    !window.location.hostname.includes('github.io') &&
+    window.location.protocol.startsWith('http')
+  ) {
+    const proto = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+    authBridge.connectRemoteServer(`${proto}//${window.location.host}`);
   }
 
   // 6. Start ECS Main Loop
