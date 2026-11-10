@@ -22,6 +22,9 @@ import { HudUiSystem } from './systems/HudUiSystem.js';
 import { AuthoritativeBridge } from './network/AuthoritativeBridge.js';
 
 function getApiBaseUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const apiParam = params.get('api');
+  if (apiParam) return apiParam.replace(/\/+$/, '');
   if (
     window.location.hostname &&
     !window.location.hostname.includes('github.io') &&
@@ -29,21 +32,23 @@ function getApiBaseUrl() {
   ) {
     return window.location.origin;
   }
-  return 'https://40-65-63-193.sslip.io';
+  return '';
 }
 
 async function fetchBootstrapCatalog() {
   const apiBase = getApiBaseUrl();
-  try {
-    const res = await fetch(`${apiBase}/api/admin/bootstrap`, { cache: 'no-store' });
-    if (res.ok) {
-      const data = await res.json();
-      if (data && Array.isArray(data.units) && data.units.length > 0) {
-        return data;
+  if (apiBase) {
+    try {
+      const res = await fetch(`${apiBase}/api/admin/bootstrap`, { cache: 'no-store' });
+      if (res.ok) {
+        const data = await res.json();
+        if (data && Array.isArray(data.units) && data.units.length > 0) {
+          return data;
+        }
       }
+    } catch (err) {
+      console.warn('[MergecCampus] Falling back to static JSON catalog:', err);
     }
-  } catch (err) {
-    console.warn('[MergecCampus] Falling back to static JSON catalog:', err);
   }
   const [dbRes, meshesRes] = await Promise.all([
     fetch('assets/data/verified_units_db.json'),
@@ -230,9 +235,6 @@ async function bootstrapMergecCampus() {
   ) {
     const proto = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
     authBridge.connectRemoteServer(`${proto}//${window.location.host}`);
-  } else {
-    // Default Azure VPS Authoritative Server (WSS with Let's Encrypt via sslip.io)
-    authBridge.connectRemoteServer('wss://40-65-63-193.sslip.io');
   }
 
   // 6. Start ECS Main Loop
