@@ -1,0 +1,48 @@
+{
+  "name": "Hải Tinh Tử Thần",
+  "anchor": [
+    0.5,
+    0.6923
+  ],
+  "width": 155,
+  "height": 117,
+  "bbox": [
+    46,
+    44,
+    201,
+    161
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 115.5,
+  "atlas_dimensions": [
+    2048,
+    1024
+  ],
+  "id": "creature_001130",
+  "db_id": "892",
+  "res_code_num": 1130,
+  "swf_hash": "90447b022f42ee30f49adba10886da62",
+  "feet_y": 81
+}

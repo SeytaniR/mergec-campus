@@ -1,0 +1,48 @@
+{
+  "name": "Hộ Vệ Nhạc Công 【Nam Lv50】",
+  "anchor": [
+    0.5,
+    0.8421
+  ],
+  "width": 258,
+  "height": 171,
+  "bbox": [
+    71,
+    92,
+    329,
+    263
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 64,
+  "total_animation_frames": 700,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 326.1,
+  "atlas_dimensions": [
+    2048,
+    2048
+  ],
+  "id": "creature_200088",
+  "db_id": "1709",
+  "res_code_num": 200088,
+  "swf_hash": "173794c80783d9046b41dcdf82dac0cc",
+  "feet_y": 144
+}

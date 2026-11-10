@@ -1,0 +1,48 @@
+{
+  "name": "Võ Sĩ Thánh Đường",
+  "anchor": [
+    0.5,
+    0.9005
+  ],
+  "width": 291,
+  "height": 211,
+  "bbox": [
+    115,
+    129,
+    406,
+    340
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 455.4,
+  "atlas_dimensions": [
+    4096,
+    2048
+  ],
+  "id": "creature_001180",
+  "db_id": "1361",
+  "res_code_num": 1180,
+  "swf_hash": "a5833a39d2ec1573bf3d911f1d73efc6",
+  "feet_y": 190
+}

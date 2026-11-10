@@ -1,0 +1,48 @@
+{
+  "name": "Hellock",
+  "anchor": [
+    0.5,
+    0.9301
+  ],
+  "width": 166,
+  "height": 143,
+  "bbox": [
+    147,
+    139,
+    313,
+    282
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 58,
+  "total_animation_frames": 680,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 363.5,
+  "atlas_dimensions": [
+    2048,
+    1024
+  ],
+  "id": "creature_001242",
+  "db_id": "2096",
+  "res_code_num": 1242,
+  "swf_hash": "3a82af872bc10738ae10dd88570b1024",
+  "feet_y": 133
+}

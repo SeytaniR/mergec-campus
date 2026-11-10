@@ -1,0 +1,48 @@
+{
+  "name": "Thủy Quái Răng Nhọn",
+  "anchor": [
+    0.5,
+    0.7387
+  ],
+  "width": 321,
+  "height": 222,
+  "bbox": [
+    92,
+    129,
+    413,
+    351
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 498.3,
+  "atlas_dimensions": [
+    4096,
+    2048
+  ],
+  "id": "creature_001182",
+  "db_id": "1343",
+  "res_code_num": 1182,
+  "swf_hash": "552f85b729f08efccfc9839216953017",
+  "feet_y": 164
+}

@@ -1,0 +1,48 @@
+{
+  "name": "Tân Niên Tiểu Ngưu (Thủy)",
+  "anchor": [
+    0.5,
+    0.8441
+  ],
+  "width": 221,
+  "height": 186,
+  "bbox": [
+    51,
+    23,
+    272,
+    209
+  ],
+  "total_unique_bitmaps": 104,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 503.5,
+  "atlas_dimensions": [
+    4096,
+    2048
+  ],
+  "id": "creature_100002",
+  "db_id": "363",
+  "res_code_num": 100002,
+  "swf_hash": "74813fb8d382f9271c22e76a4e19876f",
+  "feet_y": 157
+}

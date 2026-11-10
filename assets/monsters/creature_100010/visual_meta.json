@@ -1,0 +1,48 @@
+{
+  "name": "Tiểu Lương Tử",
+  "anchor": [
+    0.5,
+    0.8288
+  ],
+  "width": 119,
+  "height": 146,
+  "bbox": [
+    28,
+    7,
+    147,
+    153
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 64,
+  "total_animation_frames": 705,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 261.4,
+  "atlas_dimensions": [
+    2048,
+    1024
+  ],
+  "id": "creature_100010",
+  "db_id": "87",
+  "res_code_num": 100010,
+  "swf_hash": "f57ae92066b1238d34fd7f2a39174851",
+  "feet_y": 121
+}

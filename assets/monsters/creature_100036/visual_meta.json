@@ -1,0 +1,48 @@
+{
+  "name": "Haka Leeds【Boss 1-1 VDRL】",
+  "anchor": [
+    0.5,
+    0.932
+  ],
+  "width": 220,
+  "height": 206,
+  "bbox": [
+    146,
+    111,
+    366,
+    317
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 568.4,
+  "atlas_dimensions": [
+    2048,
+    2048
+  ],
+  "id": "creature_100036",
+  "db_id": "1802",
+  "res_code_num": 100036,
+  "swf_hash": "ac95d85e1db5e0970bd5fd74b6c10f4b",
+  "feet_y": 192
+}

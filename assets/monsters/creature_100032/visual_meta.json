@@ -1,0 +1,48 @@
+{
+  "name": "Hắc Nhân Mã",
+  "anchor": [
+    0.5,
+    0.8168
+  ],
+  "width": 457,
+  "height": 322,
+  "bbox": [
+    28,
+    56,
+    485,
+    378
+  ],
+  "total_unique_bitmaps": 74,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 1190.4,
+  "atlas_dimensions": [
+    4096,
+    4096
+  ],
+  "id": "creature_100032",
+  "db_id": "1672",
+  "res_code_num": 100032,
+  "swf_hash": "0571d74dda84c21a3e0285bc350c8dd9",
+  "feet_y": 263
+}

@@ -1,0 +1,48 @@
+{
+  "name": "Mestre-Sala",
+  "anchor": [
+    0.5,
+    0.7151
+  ],
+  "width": 163,
+  "height": 172,
+  "bbox": [
+    54,
+    28,
+    217,
+    200
+  ],
+  "total_unique_bitmaps": 74,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 279.6,
+  "atlas_dimensions": [
+    2048,
+    2048
+  ],
+  "id": "creature_200052",
+  "db_id": "1170",
+  "res_code_num": 200052,
+  "swf_hash": "a49f41671e6bec814f000eeabfacca57",
+  "feet_y": 123
+}

@@ -1,0 +1,48 @@
+{
+  "name": "Mê Trận Đại Đạo【Quái Mê Trận】",
+  "anchor": [
+    0.5,
+    0.8482
+  ],
+  "width": 244,
+  "height": 191,
+  "bbox": [
+    134,
+    135,
+    378,
+    326
+  ],
+  "total_unique_bitmaps": 74,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 469.5,
+  "atlas_dimensions": [
+    4096,
+    1024
+  ],
+  "id": "creature_200073",
+  "db_id": "1392",
+  "res_code_num": 200073,
+  "swf_hash": "0e6179d04540fd5efcdcf1a783c4fb95",
+  "feet_y": 162
+}

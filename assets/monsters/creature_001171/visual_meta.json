@@ -1,0 +1,48 @@
+{
+  "name": "Cua Kỳ Quái",
+  "anchor": [
+    0.5,
+    0.8736
+  ],
+  "width": 120,
+  "height": 87,
+  "bbox": [
+    196,
+    219,
+    316,
+    306
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 164.0,
+  "atlas_dimensions": [
+    1024,
+    1024
+  ],
+  "id": "creature_001171",
+  "db_id": "1325",
+  "res_code_num": 1171,
+  "swf_hash": "1d3336836148aa4a4b2f1ef85603535e",
+  "feet_y": 76
+}

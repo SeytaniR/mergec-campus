@@ -1,0 +1,49 @@
+{
+  "name": "Guerreiro Base (M)",
+  "anchor": [
+    0.5,
+    0.7953
+  ],
+  "width": 150,
+  "height": 127,
+  "bbox": [
+    24,
+    9,
+    174,
+    136
+  ],
+  "total_unique_bitmaps": 74,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 202.9,
+  "atlas_dimensions": [
+    2048,
+    1024
+  ],
+  "id": "PC_MALE_000001",
+  "gender": "MALE",
+  "tier": 1,
+  "res_code_num": 1,
+  "swf_hash": "b68e68f7e6ed33ca378b507e60664d2b",
+  "feet_y": 101
+}

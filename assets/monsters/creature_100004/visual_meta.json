@@ -1,0 +1,48 @@
+{
+  "name": "Ác Ma Quấy Phá",
+  "anchor": [
+    0.5,
+    0.6569
+  ],
+  "width": 116,
+  "height": 102,
+  "bbox": [
+    1,
+    26,
+    117,
+    128
+  ],
+  "total_unique_bitmaps": 87,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 162.7,
+  "atlas_dimensions": [
+    2048,
+    1024
+  ],
+  "id": "creature_100004",
+  "db_id": "20",
+  "res_code_num": 100004,
+  "swf_hash": "ca7451525a09f72176386179e9b69651",
+  "feet_y": 67
+}

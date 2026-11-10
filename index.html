@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Mergec Campus — Tactical 8-Dir Merge & Auto-Battler</title>
+  <link rel="stylesheet" href="style.css?v=1.0.0" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.3.2/pixi.min.js"></script>
+</head>
+<body>
+  <div id="app-shell">
+    <!-- Top Fluid HUD Bar -->
+    <header id="top-hud">
+      <div class="brand-cluster">
+        <span class="brand-logo">🧙‍♂️ Mergec Campus</span>
+        <span id="hud-server-status" class="server-pill">Servidor: Autoritário Local</span>
+      </div>
+
+      <div class="stats-cluster">
+        <span id="hud-round" class="stat-badge round">Rodada 1</span>
+        <span id="hud-phase" class="stat-badge phase">Preparação & Merge</span>
+        <span class="stat-badge gold">🪙 <b id="hud-gold">16</b></span>
+        <span id="hud-level" class="stat-badge level">Nv. 3</span>
+        <span id="hud-xp" class="stat-badge xp">XP 0/4</span>
+        <span id="hud-board-cap" class="stat-badge cap">Tabuleiro: 2/3</span>
+        <span id="hud-hp" class="stat-badge hp">❤️ 100</span>
+        <span id="hud-streak" class="stat-badge streak">0🔥</span>
+      </div>
+
+      <div class="controls-cluster">
+        <a href="admin.html" id="btn-open-admin" class="top-action-btn admin-btn" title="Painel Admin CRUD (PostgreSQL)">🛠️ Admin CRUD</a>
+        <button id="btn-open-codex" class="top-action-btn codex-btn">📖 Acervo 8-Dir (298)</button>
+        <div class="lang-switch" role="group" aria-label="Language Selector">
+          <button id="btn-lang-pt" class="lang-btn active" title="Português (Referência DB)">🇧🇷 PT</button>
+          <button id="btn-lang-en" class="lang-btn" title="English (i18n Key Translation)">🇺🇸 EN</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Middle Adaptive Workspace: Synergies + Fluid Pixi Arena + Unit Inspector -->
+    <main id="arena-workspace">
+      <aside id="left-panel" class="side-panel">
+        <h3 id="synergies-title" class="panel-heading">✨ Sinergias Ativas</h3>
+        <div id="synergies-list" class="synergies-scroll"></div>
+      </aside>
+
+      <section id="pixi-canvas-wrap" aria-label="Tactical Merge Board">
+        <div id="sell-dropzone" class="sell-dropzone">💰 Arraste aqui para vender</div>
+        <div id="toast-container" class="toast-container"></div>
+      </section>
+
+      <aside id="right-panel" class="side-panel">
+        <h3 id="inspector-title" class="panel-heading">🔍 Inspetor de Unidade</h3>
+        <div id="inspector-body" class="inspector-content"></div>
+      </aside>
+    </main>
+
+    <!-- Bottom Fluid Shop & Action Dock -->
+    <footer id="bottom-shop-dock">
+      <div class="shop-actions-col">
+        <button id="btn-start-combat" class="action-btn start-combat-btn">⚔️ Iniciar Batalha</button>
+        <div class="shop-sub-actions">
+          <button id="btn-reroll" class="action-btn reroll-btn">🎲 Atualizar (2🪙)</button>
+          <button id="btn-buy-xp" class="action-btn xp-btn">⬆️ +4 XP (4🪙)</button>
+          <button id="btn-lock-shop" class="action-btn lock-btn">🔓 Trancar</button>
+        </div>
+      </div>
+
+      <div id="shop-cards-container" class="shop-cards-row"></div>
+    </footer>
+  </div>
+
+  <!-- Modal: 298 Verified 8-Direction Units Codex -->
+  <div id="modal-codex" class="modal-backdrop">
+    <div class="modal-window">
+      <div class="modal-header">
+        <div>
+          <h2 id="codex-modal-title">📖 Catálogo Oficial: 298 Modelos 100% 8-Direções</h2>
+          <p id="codex-modal-subtitle" class="modal-subtitle">Somente personagens, pets e NPCs auditados com todas as animações nas 8 direções</p>
+        </div>
+        <button id="btn-close-codex" class="modal-close-btn">✕</button>
+      </div>
+
+      <div class="modal-toolbar">
+        <input id="codex-search-input" type="search" placeholder="Buscar por nome PT-BR, chave i18n ou ID..." />
+        <div class="codex-tabs">
+          <button id="codex-tab-all" class="codex-tab active" data-codex-cat="all">Todos</button>
+          <button id="codex-tab-characters" class="codex-tab" data-codex-cat="characters">Heróis</button>
+          <button id="codex-tab-monsters" class="codex-tab" data-codex-cat="monsters">Pets & Monstros</button>
+          <button id="codex-tab-npcs" class="codex-tab" data-codex-cat="npcs">NPCs</button>
+        </div>
+      </div>
+
+      <div id="codex-grid" class="codex-grid"></div>
+    </div>
+  </div>
+
+  <script type="module" src="src/main.js?v=1.1.0"></script>
+</body>
+</html>

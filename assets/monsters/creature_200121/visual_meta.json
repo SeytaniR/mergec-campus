@@ -1,0 +1,48 @@
+{
+  "name": "Momo【Tiến Hóa】",
+  "anchor": [
+    0.5,
+    0.8372
+  ],
+  "width": 154,
+  "height": 129,
+  "bbox": [
+    7,
+    19,
+    161,
+    148
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 191.4,
+  "atlas_dimensions": [
+    2048,
+    1024
+  ],
+  "id": "creature_200121",
+  "db_id": "1419",
+  "res_code_num": 200121,
+  "swf_hash": "810f74561eb2054d5ff7b58b65ae7988",
+  "feet_y": 108
+}

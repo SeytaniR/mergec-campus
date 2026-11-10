@@ -1,0 +1,48 @@
+{
+  "name": "Ác Linh Terra【Tiểu Quái 1-1 VDRL 1】",
+  "anchor": [
+    0.5,
+    0.9462
+  ],
+  "width": 190,
+  "height": 186,
+  "bbox": [
+    161,
+    127,
+    351,
+    313
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 479.4,
+  "atlas_dimensions": [
+    2048,
+    2048
+  ],
+  "id": "creature_100035",
+  "db_id": "1850",
+  "res_code_num": 100035,
+  "swf_hash": "3ff6ac43b8b527d5e23b241a9cd5e5f0",
+  "feet_y": 176
+}

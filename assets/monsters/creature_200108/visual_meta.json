@@ -1,0 +1,48 @@
+{
+  "name": "Hoàng Tử Thiên Sứ【Tiến Hóa】",
+  "anchor": [
+    0.5,
+    0.815
+  ],
+  "width": 196,
+  "height": 173,
+  "bbox": [
+    8,
+    13,
+    204,
+    186
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 377.1,
+  "atlas_dimensions": [
+    2048,
+    2048
+  ],
+  "id": "creature_200108",
+  "db_id": "1420",
+  "res_code_num": 200108,
+  "swf_hash": "bea2c2a91780a3813c9454e811d09770",
+  "feet_y": 141
+}

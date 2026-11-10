@@ -1,0 +1,48 @@
+{
+  "name": "Grace",
+  "anchor": [
+    0.5,
+    0.8559
+  ],
+  "width": 230,
+  "height": 236,
+  "bbox": [
+    115,
+    99,
+    345,
+    335
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 469.7,
+  "atlas_dimensions": [
+    4096,
+    1024
+  ],
+  "id": "creature_001243",
+  "db_id": "2091",
+  "res_code_num": 1243,
+  "swf_hash": "6224fa01df254e1b83ef2d7dac17841c",
+  "feet_y": 202
+}

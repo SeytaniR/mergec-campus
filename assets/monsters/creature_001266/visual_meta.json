@@ -1,0 +1,48 @@
+{
+  "name": "Thiên Không Nấm",
+  "anchor": [
+    0.5,
+    0.6994
+  ],
+  "width": 276,
+  "height": 173,
+  "bbox": [
+    118,
+    160,
+    394,
+    333
+  ],
+  "total_unique_bitmaps": 82,
+  "animations_count": 64,
+  "total_animation_frames": 779,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 278.9,
+  "atlas_dimensions": [
+    4096,
+    2048
+  ],
+  "id": "creature_001266",
+  "db_id": "2149",
+  "res_code_num": 1266,
+  "swf_hash": "44d8cbe73cff047ea4ee8e8f8791ed67",
+  "feet_y": 121
+}

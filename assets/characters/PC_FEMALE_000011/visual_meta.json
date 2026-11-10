@@ -1,0 +1,52 @@
+{
+  "name": "Guerreira Sagrada Tier 2 (F)",
+  "anchor": [
+    0.5,
+    0.9118
+  ],
+  "width": 104,
+  "height": 136,
+  "bbox": [
+    323,
+    229,
+    427,
+    365
+  ],
+  "total_unique_bitmaps": 164,
+  "animations_count": 88,
+  "total_animation_frames": 1304,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 449.3,
+  "atlas_dimensions": [
+    2048,
+    2048
+  ],
+  "id": "PC_FEMALE_000011",
+  "gender": "FEMALE",
+  "tier": 2,
+  "res_code_num": 11,
+  "swf_hash": "81b9d7917029ee7808907bead69d1e7a",
+  "feet_y": 124
+}

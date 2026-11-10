@@ -1,0 +1,48 @@
+{
+  "name": "Hộ Vệ Thợ Săn 【Nữ Lv50】",
+  "anchor": [
+    0.5,
+    0.8291
+  ],
+  "width": 225,
+  "height": 158,
+  "bbox": [
+    77,
+    100,
+    302,
+    258
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 283.0,
+  "atlas_dimensions": [
+    2048,
+    2048
+  ],
+  "id": "creature_200091",
+  "db_id": "1718",
+  "res_code_num": 200091,
+  "swf_hash": "1611095afff2a5c4bb54bda65c62d436",
+  "feet_y": 131
+}

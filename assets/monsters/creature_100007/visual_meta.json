@@ -1,0 +1,48 @@
+{
+  "name": "Y Tá MM【Tiến Hóa】",
+  "anchor": [
+    0.5,
+    0.8992
+  ],
+  "width": 71,
+  "height": 119,
+  "bbox": [
+    64,
+    15,
+    135,
+    134
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 178.1,
+  "atlas_dimensions": [
+    1024,
+    1024
+  ],
+  "id": "creature_100007",
+  "db_id": "1409",
+  "res_code_num": 100007,
+  "swf_hash": "33652084626d98531f84b9c8e93a5943",
+  "feet_y": 107
+}

@@ -1,0 +1,10 @@
+{
+  "id": "10002",
+  "width": 175,
+  "height": 130,
+  "anchor_x": 0.5,
+  "anchor_y": 0.5,
+  "num_frames": 12,
+  "fps": 24,
+  "duration_ms": 500
+}

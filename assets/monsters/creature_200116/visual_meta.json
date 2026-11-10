@@ -1,0 +1,48 @@
+{
+  "name": "Dứa Mật【Tiến Hóa】",
+  "anchor": [
+    0.5,
+    0.7355
+  ],
+  "width": 129,
+  "height": 121,
+  "bbox": [
+    13,
+    20,
+    142,
+    141
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 252.8,
+  "atlas_dimensions": [
+    2048,
+    1024
+  ],
+  "id": "creature_200116",
+  "db_id": "1416",
+  "res_code_num": 200116,
+  "swf_hash": "49c2dc4bf5005815e764be43cdbe02b2",
+  "feet_y": 89
+}

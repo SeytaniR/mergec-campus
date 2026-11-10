@@ -1,0 +1,48 @@
+{
+  "name": "Cự Phong Thần Tử",
+  "anchor": [
+    0.5,
+    0.7945
+  ],
+  "width": 250,
+  "height": 219,
+  "bbox": [
+    80,
+    55,
+    330,
+    274
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 341.2,
+  "atlas_dimensions": [
+    4096,
+    2048
+  ],
+  "id": "creature_001079",
+  "db_id": "307",
+  "res_code_num": 1079,
+  "swf_hash": "20bff2b72ffc1870f61f0373b59f672b",
+  "feet_y": 174
+}

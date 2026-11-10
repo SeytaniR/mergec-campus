@@ -1,0 +1,48 @@
+{
+  "name": "Bạo Long Thú",
+  "anchor": [
+    0.5,
+    0.7663
+  ],
+  "width": 336,
+  "height": 291,
+  "bbox": [
+    92,
+    77,
+    428,
+    368
+  ],
+  "total_unique_bitmaps": 76,
+  "animations_count": 64,
+  "total_animation_frames": 779,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 760.8,
+  "atlas_dimensions": [
+    4096,
+    4096
+  ],
+  "id": "creature_001261",
+  "db_id": "2157",
+  "res_code_num": 1261,
+  "swf_hash": "faaccded4584395f9ea646ba7fb22166",
+  "feet_y": 223
+}

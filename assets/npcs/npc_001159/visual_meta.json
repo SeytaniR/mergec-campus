@@ -1,0 +1,46 @@
+{
+  "name": "Tử Vệ Huyết Sắc",
+  "anchor": [
+    0.5,
+    1.0
+  ],
+  "width": 160,
+  "height": 170,
+  "bbox": [
+    176,
+    145,
+    336,
+    315
+  ],
+  "total_unique_bitmaps": 100,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 404.8,
+  "atlas_dimensions": [
+    2048,
+    2048
+  ],
+  "res_path": "creature/NPC_FUNC_001159.swf",
+  "res_code_num": 1159,
+  "type": "npc"
+}

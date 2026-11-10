@@ -1,0 +1,48 @@
+{
+  "name": "Lôi Lân Ảnh",
+  "anchor": [
+    0.5,
+    0.8095
+  ],
+  "width": 198,
+  "height": 168,
+  "bbox": [
+    157,
+    156,
+    355,
+    324
+  ],
+  "total_unique_bitmaps": 168,
+  "animations_count": 64,
+  "total_animation_frames": 779,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 942.3,
+  "atlas_dimensions": [
+    4096,
+    2048
+  ],
+  "id": "creature_100059",
+  "db_id": "2292",
+  "res_code_num": 100059,
+  "swf_hash": "e4d2a1a996f983ecf84a9677d2981342",
+  "feet_y": 136
+}

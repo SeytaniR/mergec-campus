@@ -1,0 +1,238 @@
+[
+  {
+    "mesh_id": "board_perspective_grid",
+    "name_ptbr": "Malha Perspectiva 2.5D do Tabuleiro (7x6)",
+    "mesh_type": "board_grid",
+    "enabled": true,
+    "color_hex": "#38bdf8",
+    "alpha": 0.34,
+    "speed": 1.0,
+    "intensity": 1.0,
+    "blend_mode": "screen",
+    "points": [
+      { "x": 388, "y": 236 },
+      { "x": 988, "y": 236 },
+      { "x": 1054, "y": 546 },
+      { "x": 322, "y": 546 }
+    ],
+    "params": {
+      "cols": 7,
+      "rows": 6,
+      "enemy_color": "#f43f5e",
+      "player_color": "#38bdf8",
+      "divider_color": "#facc15"
+    }
+  },
+  {
+    "mesh_id": "bench_runic_pedestals",
+    "name_ptbr": "Malha dos 9 Pedestais Rúnicos do Banco (Bench)",
+    "mesh_type": "bench_pedestals",
+    "enabled": true,
+    "color_hex": "#facc15",
+    "alpha": 0.48,
+    "speed": 1.2,
+    "intensity": 1.0,
+    "blend_mode": "screen",
+    "points": [
+      { "x": 278, "y": 674 },
+      { "x": 1098, "y": 674 }
+    ],
+    "params": {
+      "slots": 9,
+      "radius_x": 36,
+      "radius_y": 24
+    }
+  },
+  {
+    "mesh_id": "canal_water_left",
+    "name_ptbr": "Canal Hidrodinâmico de Mana (Esquerda)",
+    "mesh_type": "water_caustics",
+    "enabled": true,
+    "color_hex": "#22d3ee",
+    "alpha": 0.55,
+    "speed": 1.15,
+    "intensity": 1.2,
+    "blend_mode": "screen",
+    "points": [
+      { "x": 212, "y": 12 },
+      { "x": 312, "y": 12 },
+      { "x": 146, "y": 758 },
+      { "x": 4, "y": 758 }
+    ],
+    "params": {
+      "wave_count": 14,
+      "sparkle_count": 18
+    }
+  },
+  {
+    "mesh_id": "canal_water_right",
+    "name_ptbr": "Canal Hidrodinâmico de Mana (Direita)",
+    "mesh_type": "water_caustics",
+    "enabled": true,
+    "color_hex": "#22d3ee",
+    "alpha": 0.55,
+    "speed": 1.15,
+    "intensity": 1.2,
+    "blend_mode": "screen",
+    "points": [
+      { "x": 1064, "y": 12 },
+      { "x": 1164, "y": 12 },
+      { "x": 1372, "y": 758 },
+      { "x": 1230, "y": 758 }
+    ],
+    "params": {
+      "wave_count": 14,
+      "sparkle_count": 18
+    }
+  },
+  {
+    "mesh_id": "portal_arch_north",
+    "name_ptbr": "Portal Dimensional da Academia (Norte)",
+    "mesh_type": "portal_vortex",
+    "enabled": true,
+    "color_hex": "#38bdf8",
+    "alpha": 0.78,
+    "speed": 1.4,
+    "intensity": 1.35,
+    "blend_mode": "screen",
+    "points": [
+      { "x": 638, "y": 28 },
+      { "x": 738, "y": 28 },
+      { "x": 744, "y": 176 },
+      { "x": 632, "y": 176 }
+    ],
+    "params": {
+      "rings": 4
+    }
+  },
+  {
+    "mesh_id": "brazier_fire_left",
+    "name_ptbr": "Pira de Fogo Arcano Ciano (Esquerda)",
+    "mesh_type": "brazier_fire",
+    "enabled": true,
+    "color_hex": "#00f2fe",
+    "alpha": 0.85,
+    "speed": 1.6,
+    "intensity": 1.4,
+    "blend_mode": "screen",
+    "points": [
+      { "x": 534, "y": 36 },
+      { "x": 592, "y": 36 },
+      { "x": 592, "y": 126 },
+      { "x": 534, "y": 126 }
+    ],
+    "params": {
+      "embers": 12
+    }
+  },
+  {
+    "mesh_id": "brazier_fire_right",
+    "name_ptbr": "Pira de Fogo Arcano Ciano (Direita)",
+    "mesh_type": "brazier_fire",
+    "enabled": true,
+    "color_hex": "#00f2fe",
+    "alpha": 0.85,
+    "speed": 1.6,
+    "intensity": 1.4,
+    "blend_mode": "screen",
+    "points": [
+      { "x": 784, "y": 36 },
+      { "x": 842, "y": 36 },
+      { "x": 842, "y": 126 },
+      { "x": 784, "y": 126 }
+    ],
+    "params": {
+      "embers": 12
+    }
+  },
+  {
+    "mesh_id": "central_arcane_circle",
+    "name_ptbr": "Círculo Arcano Central do Pátio",
+    "mesh_type": "rune_circle",
+    "enabled": true,
+    "color_hex": "#38bdf8",
+    "alpha": 0.45,
+    "speed": 0.8,
+    "intensity": 1.15,
+    "blend_mode": "screen",
+    "points": [
+      { "x": 542, "y": 308 },
+      { "x": 834, "y": 308 },
+      { "x": 850, "y": 468 },
+      { "x": 526, "y": 468 }
+    ],
+    "params": {
+      "secondary_color": "#facc15"
+    }
+  },
+  {
+    "mesh_id": "streetlamp_left",
+    "name_ptbr": "Lampião Arcano Azul (Esquerda)",
+    "mesh_type": "lantern_halo",
+    "enabled": true,
+    "color_hex": "#38bdf8",
+    "alpha": 0.65,
+    "speed": 1.2,
+    "intensity": 1.1,
+    "blend_mode": "screen",
+    "points": [
+      { "x": 201, "y": 424 },
+      { "x": 241, "y": 424 },
+      { "x": 241, "y": 464 },
+      { "x": 201, "y": 464 }
+    ],
+    "params": {}
+  },
+  {
+    "mesh_id": "streetlamp_right",
+    "name_ptbr": "Lampião Arcano Azul (Direita)",
+    "mesh_type": "lantern_halo",
+    "enabled": true,
+    "color_hex": "#38bdf8",
+    "alpha": 0.65,
+    "speed": 1.2,
+    "intensity": 1.1,
+    "blend_mode": "screen",
+    "points": [
+      { "x": 1135, "y": 424 },
+      { "x": 1175, "y": 424 },
+      { "x": 1175, "y": 464 },
+      { "x": 1135, "y": 464 }
+    ],
+    "params": {}
+  },
+  {
+    "mesh_id": "crystals_columns_left",
+    "name_ptbr": "Cristais Levitantes das Colunas (Esquerda)",
+    "mesh_type": "crystal_glow",
+    "enabled": true,
+    "color_hex": "#38bdf8",
+    "alpha": 0.62,
+    "speed": 1.35,
+    "intensity": 1.0,
+    "blend_mode": "screen",
+    "points": [
+      { "x": 173, "y": 76 },
+      { "x": 128, "y": 196 },
+      { "x": 68, "y": 348 }
+    ],
+    "params": {}
+  },
+  {
+    "mesh_id": "crystals_columns_right",
+    "name_ptbr": "Cristais Levitantes das Colunas (Direita)",
+    "mesh_type": "crystal_glow",
+    "enabled": true,
+    "color_hex": "#38bdf8",
+    "alpha": 0.62,
+    "speed": 1.35,
+    "intensity": 1.0,
+    "blend_mode": "screen",
+    "points": [
+      { "x": 1203, "y": 76 },
+      { "x": 1248, "y": 196 },
+      { "x": 1308, "y": 348 }
+    ],
+    "params": {}
+  }
+]

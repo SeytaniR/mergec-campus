@@ -1,0 +1,86 @@
+/**
+ * pt-BR.js
+ * Dicionário base (Português Brasileiro - Referência Canônica do Banco de Dados).
+ * Usa chaves hierárquicas e variáveis interpoladas {variavel}.
+ */
+export const ptBR = {
+  "app.title": "Mergec Campus",
+  "app.subtitle": "Auto-Battler & Merge Tático 8-Direções",
+
+  "ui.hud.round": "Rodada {round}",
+  "ui.hud.phase.prep": "Preparação & Merge",
+  "ui.hud.phase.combat": "Combate em Arena!",
+  "ui.hud.gold": "{gold}",
+  "ui.hud.level": "Nv. {level}",
+  "ui.hud.xp": "XP {xp}/{nextXp}",
+  "ui.hud.board_cap": "Tabuleiro: {current}/{max}",
+  "ui.hud.hp": "Vida: {hp}",
+  "ui.hud.streak": "Sequência: {streak}🔥",
+  "ui.hud.server_mode.local": "Servidor: Autoritário Local (Loopback)",
+  "ui.hud.server_mode.remote": "Servidor: VPS Online ({url})",
+
+  "ui.btn.start_combat": "⚔️ Iniciar Batalha",
+  "ui.btn.in_combat": "⏳ Em Combate...",
+  "ui.btn.reroll": "🎲 Atualizar ({cost}🪙)",
+  "ui.btn.buy_xp": "⬆️ +4 XP ({cost}🪙)",
+  "ui.btn.codex": "📖 Acervo 8-Dir ({count})",
+  "ui.btn.sell_zone": "💰 Arraste aqui para vender (+{refund}🪙)",
+
+  "ui.panel.synergies": "✨ Sinergias Ativas",
+  "ui.panel.synergies.empty": "Posicione campeões no tabuleiro para ativar sinergias",
+  "ui.panel.inspector": "🔍 Inspetor de Unidade",
+  "ui.panel.inspector.empty": "Toque em uma unidade para ver atributos e habilidade",
+  "ui.panel.bench_label": "Banco de Reserva & Merge (Combine 3 iguais = ⭐+1)",
+
+  "ui.shop.cost": "{cost}🪙",
+  "ui.shop.sold": " Comprado",
+  "ui.shop.locked": "🔒 Loja Trancada",
+  "ui.shop.unlocked": "🔓 Trancar Loja",
+
+  "ui.codex.title": "📖 Catálogo Oficial: {count} Modelos 100% 8-Direções",
+  "ui.codex.subtitle": "Somente personagens, pets e NPCs auditados com todas as animações nas 8 direções (chave i18n + referência PT-BR)",
+  "ui.codex.search_placeholder": "Buscar por nome PT-BR, chave i18n ou ID...",
+  "ui.codex.filter.all": "Todos ({count})",
+  "ui.codex.filter.characters": "Heróis ({count})",
+  "ui.codex.filter.monsters": "Pets & Monstros ({count})",
+  "ui.codex.filter.npcs": "NPCs de Combate ({count})",
+  "ui.codex.spawn_btn": "➕ Invocar no Banco (Teste)",
+
+  "toast.merge.success": "🌟 MERGE! {name} evoluiu para {stars} Estrelas!",
+  "toast.combat.victory": "🏆 Vitória na Rodada {round}! +{gold} Ouro recebido!",
+  "toast.combat.defeat": "💀 Derrota na Rodada {round}! Você perdeu {dmg} de Vida.",
+  "toast.shop.no_gold": "Ouro insuficiente! Precisa de {cost}🪙.",
+  "toast.bench.full": "Banco de reserva cheio (9/9)! Faça um Merge ou posicione no tabuleiro.",
+  "toast.board.full": "Limite do tabuleiro atingido ({max}/{max})! Suba de nível para colocar mais peças.",
+  "toast.board.combat_locked": "Aguarde o fim do combate para reposicionar unidades no tabuleiro!",
+
+  "trait.origin.academy.name": "Academia Mágica",
+  "trait.origin.academy.desc": "Concede +{bonus} de Mana inicial e +{ap}% de Poder de Habilidade para todos os acadêmicos.",
+  "trait.origin.dragon.name": "Dracônico",
+  "trait.origin.dragon.desc": "Ataques queimam o alvo e concedem +{bonus}% de Dano Crítico dracônico.",
+  "trait.origin.beast.name": "Fera Selvagem",
+  "trait.origin.beast.desc": "Aumenta a Velocidade de Ataque da equipe em +{bonus}%.",
+  "trait.origin.mech.name": "Mecatrônico",
+  "trait.origin.mech.desc": "Inicia o combate com um escudo de +{bonus} HP e +{def} de Armadura.",
+  "trait.origin.spirit.name": "Espírito Elemental",
+  "trait.origin.spirit.desc": "Regenera {bonus} de Mana adicional por ataque básico.",
+  "trait.origin.nature.name": "Natureza Viva",
+  "trait.origin.nature.desc": "Cura {bonus} de Vida a cada 2 segundos durante o combate.",
+  "trait.origin.shadow.name": "Pacto das Sombras",
+  "trait.origin.shadow.desc": "Causa +{bonus}% de dano extra contra inimigos abaixo de 60% de HP.",
+  "trait.origin.celestial.name": "Celestial",
+  "trait.origin.celestial.desc": "Concede {bonus}% de Vampirismo Mágico e Físico para o time.",
+
+  "trait.class.warrior.name": "Guerreiro",
+  "trait.class.warrior.desc": "Guerreiros recebem +{bonus} de Armadura e +{atk} de Ataque Físico.",
+  "trait.class.mage.name": "Arcanista",
+  "trait.class.mage.desc": "Habilidades causam +{bonus}% de Dano Mágico amplificado.",
+  "trait.class.ranger.name": "Atirador",
+  "trait.class.ranger.desc": "Ganha +1 de Alcance e +{bonus}% de Velocidade de Disparo.",
+  "trait.class.assassin.name": "Assassino",
+  "trait.class.assassin.desc": "Foca a retaguarda e ganha +{bonus}% de Dano de Habilidade.",
+  "trait.class.guardian.name": "Bastião",
+  "trait.class.guardian.desc": "Aumenta a Vida Máxima em +{bonus}% e reduz dano recebido.",
+  "trait.class.mystic.name": "Místico",
+  "trait.class.mystic.desc": "Concede +{bonus} de Defesa Mágica e amplifica escudos/curas."
+};

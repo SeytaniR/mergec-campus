@@ -1,0 +1,271 @@
+{
+  "frames": {
+    "10009_00": {
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "w": 85,
+        "h": 72
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 85,
+        "h": 72
+      },
+      "sourceSize": {
+        "w": 85,
+        "h": 72
+      }
+    },
+    "10009_01": {
+      "frame": {
+        "x": 89,
+        "y": 2,
+        "w": 85,
+        "h": 72
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 85,
+        "h": 72
+      },
+      "sourceSize": {
+        "w": 85,
+        "h": 72
+      }
+    },
+    "10009_02": {
+      "frame": {
+        "x": 176,
+        "y": 2,
+        "w": 85,
+        "h": 72
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 85,
+        "h": 72
+      },
+      "sourceSize": {
+        "w": 85,
+        "h": 72
+      }
+    },
+    "10009_03": {
+      "frame": {
+        "x": 263,
+        "y": 2,
+        "w": 85,
+        "h": 72
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 85,
+        "h": 72
+      },
+      "sourceSize": {
+        "w": 85,
+        "h": 72
+      }
+    },
+    "10009_04": {
+      "frame": {
+        "x": 2,
+        "y": 76,
+        "w": 85,
+        "h": 72
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 85,
+        "h": 72
+      },
+      "sourceSize": {
+        "w": 85,
+        "h": 72
+      }
+    },
+    "10009_05": {
+      "frame": {
+        "x": 89,
+        "y": 76,
+        "w": 85,
+        "h": 72
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 85,
+        "h": 72
+      },
+      "sourceSize": {
+        "w": 85,
+        "h": 72
+      }
+    },
+    "10009_06": {
+      "frame": {
+        "x": 176,
+        "y": 76,
+        "w": 85,
+        "h": 72
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 85,
+        "h": 72
+      },
+      "sourceSize": {
+        "w": 85,
+        "h": 72
+      }
+    },
+    "10009_07": {
+      "frame": {
+        "x": 263,
+        "y": 76,
+        "w": 85,
+        "h": 72
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 85,
+        "h": 72
+      },
+      "sourceSize": {
+        "w": 85,
+        "h": 72
+      }
+    },
+    "10009_08": {
+      "frame": {
+        "x": 2,
+        "y": 150,
+        "w": 85,
+        "h": 72
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 85,
+        "h": 72
+      },
+      "sourceSize": {
+        "w": 85,
+        "h": 72
+      }
+    },
+    "10009_09": {
+      "frame": {
+        "x": 89,
+        "y": 150,
+        "w": 85,
+        "h": 72
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 85,
+        "h": 72
+      },
+      "sourceSize": {
+        "w": 85,
+        "h": 72
+      }
+    },
+    "10009_10": {
+      "frame": {
+        "x": 176,
+        "y": 150,
+        "w": 85,
+        "h": 72
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 85,
+        "h": 72
+      },
+      "sourceSize": {
+        "w": 85,
+        "h": 72
+      }
+    },
+    "10009_11": {
+      "frame": {
+        "x": 263,
+        "y": 150,
+        "w": 85,
+        "h": 72
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 85,
+        "h": 72
+      },
+      "sourceSize": {
+        "w": 85,
+        "h": 72
+      }
+    }
+  },
+  "animations": {
+    "play": [
+      "10009_00",
+      "10009_01",
+      "10009_02",
+      "10009_03",
+      "10009_04",
+      "10009_05",
+      "10009_06",
+      "10009_07",
+      "10009_08",
+      "10009_09",
+      "10009_10",
+      "10009_11"
+    ]
+  },
+  "meta": {
+    "app": "MagicCampusEffectConverter",
+    "version": "1.0",
+    "image": "atlas.webp",
+    "format": "RGBA8888",
+    "size": {
+      "w": 350,
+      "h": 224
+    },
+    "scale": "1"
+  }
+}

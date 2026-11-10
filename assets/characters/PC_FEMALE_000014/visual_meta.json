@@ -1,0 +1,52 @@
+{
+  "name": "Suma Sacerdotisa Tier 2 (F)",
+  "anchor": [
+    0.5,
+    0.6014
+  ],
+  "width": 124,
+  "height": 138,
+  "bbox": [
+    313,
+    243,
+    437,
+    381
+  ],
+  "total_unique_bitmaps": 164,
+  "animations_count": 88,
+  "total_animation_frames": 1304,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 510.1,
+  "atlas_dimensions": [
+    2048,
+    2048
+  ],
+  "id": "PC_FEMALE_000014",
+  "gender": "FEMALE",
+  "tier": 2,
+  "res_code_num": 14,
+  "swf_hash": "1172643827f112e92b9293781bb585d5",
+  "feet_y": 83
+}

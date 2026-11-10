@@ -1,0 +1,222 @@
+{
+  "version": "1.0.0",
+  "total_portraits": 27,
+  "portraits": [
+    {
+      "id": 1,
+      "filename": "pc_male_000001.png",
+      "type": "character_male",
+      "path": "assets/portraits/pc_male_000001.png",
+      "original_path": "icon/creature/PC_MALE_000001.png",
+      "size_bytes": 5641
+    },
+    {
+      "id": 1,
+      "filename": "pc_female_000001.png",
+      "type": "character_female",
+      "path": "assets/portraits/pc_female_000001.png",
+      "original_path": "icon/creature/PC_FEMALE_000001.png",
+      "size_bytes": 3116
+    },
+    {
+      "id": 2,
+      "filename": "pc_male_000002.png",
+      "type": "character_male",
+      "path": "assets/portraits/pc_male_000002.png",
+      "original_path": "icon/creature/PC_MALE_000002.png",
+      "size_bytes": 2999
+    },
+    {
+      "id": 2,
+      "filename": "pc_female_000002.png",
+      "type": "character_female",
+      "path": "assets/portraits/pc_female_000002.png",
+      "original_path": "icon/creature/PC_FEMALE_000002.png",
+      "size_bytes": 5820
+    },
+    {
+      "id": 3,
+      "filename": "pc_male_000003.png",
+      "type": "character_male",
+      "path": "assets/portraits/pc_male_000003.png",
+      "original_path": "icon/creature/PC_MALE_000003.png",
+      "size_bytes": 3084
+    },
+    {
+      "id": 3,
+      "filename": "pc_female_000003.png",
+      "type": "character_female",
+      "path": "assets/portraits/pc_female_000003.png",
+      "original_path": "icon/creature/PC_FEMALE_000003.png",
+      "size_bytes": 3042
+    },
+    {
+      "id": 4,
+      "filename": "pc_male_000004.png",
+      "type": "character_male",
+      "path": "assets/portraits/pc_male_000004.png",
+      "original_path": "icon/creature/PC_MALE_000004.png",
+      "size_bytes": 3133
+    },
+    {
+      "id": 4,
+      "filename": "pc_female_000004.png",
+      "type": "character_female",
+      "path": "assets/portraits/pc_female_000004.png",
+      "original_path": "icon/creature/PC_FEMALE_000004.png",
+      "size_bytes": 5732
+    },
+    {
+      "id": 5,
+      "filename": "pc_male_000005.png",
+      "type": "character_male",
+      "path": "assets/portraits/pc_male_000005.png",
+      "original_path": "icon/creature/PC_MALE_000005.png",
+      "size_bytes": 3120
+    },
+    {
+      "id": 5,
+      "filename": "pc_female_000005.png",
+      "type": "character_female",
+      "path": "assets/portraits/pc_female_000005.png",
+      "original_path": "icon/creature/PC_FEMALE_000005.png",
+      "size_bytes": 3087
+    },
+    {
+      "id": 6,
+      "filename": "pc_male_000006.png",
+      "type": "character_male",
+      "path": "assets/portraits/pc_male_000006.png",
+      "original_path": "icon/creature/PC_MALE_000006.png",
+      "size_bytes": 2976
+    },
+    {
+      "id": 6,
+      "filename": "pc_female_000006.png",
+      "type": "character_female",
+      "path": "assets/portraits/pc_female_000006.png",
+      "original_path": "icon/creature/PC_FEMALE_000006.png",
+      "size_bytes": 3075
+    },
+    {
+      "id": 95,
+      "filename": "npc_func_000095.png",
+      "type": "npc",
+      "path": "assets/portraits/npc_func_000095.png",
+      "original_path": "icon/creature/NPC_FUNC_000095.png",
+      "size_bytes": 24007
+    },
+    {
+      "id": 97,
+      "filename": "npc_func_000097.png",
+      "type": "npc",
+      "path": "assets/portraits/npc_func_000097.png",
+      "original_path": "icon/creature/NPC_FUNC_000097.png",
+      "size_bytes": 24607
+    },
+    {
+      "id": 99,
+      "filename": "npc_func_000099.png",
+      "type": "npc",
+      "path": "assets/portraits/npc_func_000099.png",
+      "original_path": "icon/creature/NPC_FUNC_000099.png",
+      "size_bytes": 25999
+    },
+    {
+      "id": 101,
+      "filename": "npc_func_000101.png",
+      "type": "npc",
+      "path": "assets/portraits/npc_func_000101.png",
+      "original_path": "icon/creature/NPC_FUNC_000101.png",
+      "size_bytes": 27465
+    },
+    {
+      "id": 103,
+      "filename": "npc_func_000103.png",
+      "type": "npc",
+      "path": "assets/portraits/npc_func_000103.png",
+      "original_path": "icon/creature/NPC_FUNC_000103.png",
+      "size_bytes": 25834
+    },
+    {
+      "id": 1238,
+      "filename": "npc_cre_001238.png",
+      "type": "monster_pet",
+      "path": "assets/portraits/npc_cre_001238.png",
+      "original_path": "icon/creature/NPC_CRE_001238.png",
+      "size_bytes": 8100
+    },
+    {
+      "id": 1239,
+      "filename": "npc_cre_001239.png",
+      "type": "monster_pet",
+      "path": "assets/portraits/npc_cre_001239.png",
+      "original_path": "icon/creature/NPC_CRE_001239.png",
+      "size_bytes": 8732
+    },
+    {
+      "id": 1240,
+      "filename": "npc_cre_001240.png",
+      "type": "monster_pet",
+      "path": "assets/portraits/npc_cre_001240.png",
+      "original_path": "icon/creature/NPC_CRE_001240.png",
+      "size_bytes": 8251
+    },
+    {
+      "id": 1241,
+      "filename": "npc_cre_001241.png",
+      "type": "monster_pet",
+      "path": "assets/portraits/npc_cre_001241.png",
+      "original_path": "icon/creature/NPC_CRE_001241.png",
+      "size_bytes": 7924
+    },
+    {
+      "id": 1242,
+      "filename": "npc_cre_001242.png",
+      "type": "monster_pet",
+      "path": "assets/portraits/npc_cre_001242.png",
+      "original_path": "icon/creature/NPC_CRE_001242.png",
+      "size_bytes": 8340
+    },
+    {
+      "id": 1243,
+      "filename": "npc_cre_001243.png",
+      "type": "monster_pet",
+      "path": "assets/portraits/npc_cre_001243.png",
+      "original_path": "icon/creature/NPC_CRE_001243.png",
+      "size_bytes": 7674
+    },
+    {
+      "id": 1244,
+      "filename": "npc_cre_001244.png",
+      "type": "monster_pet",
+      "path": "assets/portraits/npc_cre_001244.png",
+      "original_path": "icon/creature/NPC_CRE_001244.png",
+      "size_bytes": 9227
+    },
+    {
+      "id": 1245,
+      "filename": "npc_cre_001245.png",
+      "type": "monster_pet",
+      "path": "assets/portraits/npc_cre_001245.png",
+      "original_path": "icon/creature/NPC_CRE_001245.png",
+      "size_bytes": 8382
+    },
+    {
+      "id": 1246,
+      "filename": "npc_cre_001246.png",
+      "type": "monster_pet",
+      "path": "assets/portraits/npc_cre_001246.png",
+      "original_path": "icon/creature/NPC_CRE_001246.png",
+      "size_bytes": 8353
+    },
+    {
+      "id": 1247,
+      "filename": "npc_cre_001247.png",
+      "type": "monster_pet",
+      "path": "assets/portraits/npc_cre_001247.png",
+      "original_path": "icon/creature/NPC_CRE_001247.png",
+      "size_bytes": 7875
+    }
+  ]
+}

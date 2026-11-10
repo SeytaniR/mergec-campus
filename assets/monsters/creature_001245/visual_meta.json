@@ -1,0 +1,48 @@
+{
+  "name": "Frya",
+  "anchor": [
+    0.5,
+    0.9431
+  ],
+  "width": 124,
+  "height": 123,
+  "bbox": [
+    168,
+    154,
+    292,
+    277
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 64,
+  "total_animation_frames": 672,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 254.8,
+  "atlas_dimensions": [
+    2048,
+    1024
+  ],
+  "id": "creature_001245",
+  "db_id": "2103",
+  "res_code_num": 1245,
+  "swf_hash": "3f694d2aabdba16e31d2d158913d2760",
+  "feet_y": 116
+}

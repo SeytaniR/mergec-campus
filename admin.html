@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Mergec Campus — Painel Admin CRUD & Live Game Ops (PostgreSQL)</title>
+  <link rel="stylesheet" href="admin.css?v=1.1.0" />
+</head>
+<body>
+  <div id="admin-shell">
+    <!-- Top Header -->
+    <header class="admin-topbar">
+      <div class="admin-brand">
+        <span class="brand-icon">🛠️</span>
+        <div>
+          <h1>Mergec Campus — Admin Studio CRUD</h1>
+          <p class="brand-sub">Gerenciamento ao Vivo de Economia, Personagens, Habilidades, VFX, Fórmulas de Dano e i18n (PostgreSQL 16)</p>
+        </div>
+      </div>
+
+      <div class="admin-header-right">
+        <span id="admin-db-status" class="db-status-pill">⏳ Conectando ao PostgreSQL...</span>
+        <button id="btn-reload-db" class="btn-secondary">🔄 Sincronizar DB</button>
+        <a href="./" class="btn-back-game">🎮 Voltar ao Jogo</a>
+      </div>
+    </header>
+
+    <!-- Fluid Navigation Tabs -->
+    <nav class="admin-nav-tabs" aria-label="Tabelas do Jogo">
+      <button class="nav-tab active" data-admin-tab="economy">
+        💰 Economia & Fórmulas de Dano
+      </button>
+      <button class="nav-tab" data-admin-tab="units">
+        🧙‍♂️ Personagens & Habilidades <span id="badge-count-units" class="tab-badge">298</span>
+      </button>
+      <button class="nav-tab" data-admin-tab="traits">
+        ✨ Sinergias (Origens/Classes) <span id="badge-count-traits" class="tab-badge">14</span>
+      </button>
+      <button class="nav-tab" data-admin-tab="vfx">
+        🎆 Efeitos Especiais (VFX) <span id="badge-count-vfx" class="tab-badge">12</span>
+      </button>
+      <button class="nav-tab" data-admin-tab="arenaMeshes">
+        🏟️ Malhas da Arena 2.5D <span id="badge-count-arena-meshes" class="tab-badge">12</span>
+      </button>
+      <button class="nav-tab" data-admin-tab="i18n">
+        🌐 Traduções i18n & PT-BR <span id="badge-count-i18n" class="tab-badge">0</span>
+      </button>
+      <button class="nav-tab" data-admin-tab="matches">
+        📡 Partidas Online <span id="badge-count-matches" class="tab-badge">0</span>
+      </button>
+    </nav>
+
+    <!-- Dynamic Tab Viewport -->
+    <main id="admin-tab-viewport" class="admin-viewport"></main>
+
+    <!-- Toast Notifications -->
+    <div id="admin-toast-wrap" class="admin-toast-wrap"></div>
+  </div>
+
+  <script type="module" src="src/admin/AdminApp.js?v=1.1.0"></script>
+</body>
+</html>

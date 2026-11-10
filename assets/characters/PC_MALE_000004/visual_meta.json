@@ -1,0 +1,49 @@
+{
+  "name": "Sacerdote Base (M)",
+  "anchor": [
+    0.5,
+    0.9196
+  ],
+  "width": 81,
+  "height": 112,
+  "bbox": [
+    125,
+    71,
+    206,
+    183
+  ],
+  "total_unique_bitmaps": 74,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 198.8,
+  "atlas_dimensions": [
+    1024,
+    1024
+  ],
+  "id": "PC_MALE_000004",
+  "gender": "MALE",
+  "tier": 1,
+  "res_code_num": 4,
+  "swf_hash": "13641a306a668b7847d0629381ab52bc",
+  "feet_y": 103
+}

@@ -1,0 +1,48 @@
+{
+  "name": "Criatura #200178",
+  "anchor": [
+    0.5,
+    0.96
+  ],
+  "width": 127,
+  "height": 100,
+  "bbox": [
+    192,
+    192,
+    319,
+    292
+  ],
+  "total_unique_bitmaps": 168,
+  "animations_count": 64,
+  "total_animation_frames": 779,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 407.6,
+  "atlas_dimensions": [
+    2048,
+    2048
+  ],
+  "id": "creature_200178",
+  "db_id": "300178",
+  "res_code_num": 200178,
+  "swf_hash": "b80567e285ad5d5a7f95b4b9a3b69c3f",
+  "feet_y": 96
+}

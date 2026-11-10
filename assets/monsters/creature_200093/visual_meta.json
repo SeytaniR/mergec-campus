@@ -1,0 +1,48 @@
+{
+  "name": "Hộ Vệ Xạ Thủ 【Nữ Lv50】",
+  "anchor": [
+    0.5,
+    0.7984
+  ],
+  "width": 134,
+  "height": 124,
+  "bbox": [
+    123,
+    123,
+    257,
+    247
+  ],
+  "total_unique_bitmaps": 68,
+  "animations_count": 64,
+  "total_animation_frames": 704,
+  "actions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "directions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "atlas_size_kb": 213.4,
+  "atlas_dimensions": [
+    2048,
+    1024
+  ],
+  "id": "creature_200093",
+  "db_id": "1717",
+  "res_code_num": 200093,
+  "swf_hash": "b94eeb28b25ef35d9a294331b6b699cf",
+  "feet_y": 99
+}
